@@ -1,0 +1,39 @@
+.mat-dialog-title{
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+mat-form-field {
+    width: 90%;
+    padding-bottom: 5px;
+    font-family: 'Tajawal', sans-serif !important ;
+    font-size: medium;
+    
+}
+
+.mat-form-field  {
+    color: var(--primary-color);
+}
+
+
+
+.mat-radio-group {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0;
+    align-items: flex-start;
+}
+
+.mat-radio-button {
+    margin: 5px;
+}
+
+mat-icon {
+    color: var(--primary-color);
+}
+
+.rules{
+    font-family: 'Tajawal', sans-serif;
+    color: black;
+
+}

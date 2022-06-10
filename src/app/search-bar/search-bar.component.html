@@ -1,0 +1,15 @@
+<form class="example-form">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <span matPrefix> </span>
+            <input class="searchBarInput" matInput placeholder="{{'Search.SearchAProduct' | translate}}"
+             name="search"  [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            <button matSuffix mat-button (click)="search()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+</form>

@@ -1,0 +1,12 @@
+{
+    "General":{
+        "Yes" : "نعم",
+        "No" :"لا"
+    }, 
+    "Menu" : {"CustomizedPackage" : "صمم حزمتك الخاصة" , 
+              "Maintenance" : "الصيانة" , 
+              "BestPackagePrice" : "أفضل العروض",
+              "Login" : "تسجيل الدخول",
+              "RegisterNewSeller" : "تسجيل بائع جديد"
+    }
+}

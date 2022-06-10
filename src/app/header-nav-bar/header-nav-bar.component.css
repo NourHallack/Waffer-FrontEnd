@@ -1,0 +1,95 @@
+.mat-toolbar{
+    background-color: var(--primary-color);
+    color: var(--background-color); 
+    margin-bottom: 0;  
+    margin-top: 0;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-icon{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.mat-icon{
+    color: var(--background-color);
+}
+
+.mat-form-field {
+    font-size: medium;
+    padding-left: 0.5em;
+    width: 120px;
+}
+
+.mat-raised-button{
+    color : var(--primary-color);
+    font-family: 'Tajawal', sans-serif;
+}
+
+.mat-button{
+    font-family: 'Tajawal', sans-serif;
+}
+
+.mat-menu-panel { 
+    width: none !important;
+    padding: 10px;
+
+
+}
+
+.actionButton{
+    color : var(--background-color);
+    background-color: var(--primary-color);
+    width: 100%;
+    margin: auto;
+   
+}
+
+.actionTitle{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.product{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.test{
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: unset;
+    text-align: center;
+}
+
+
+.productImage{
+    width: auto;
+    height: auto;
+    position: unset;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.productDescription{
+    flex-grow: 1;
+    padding-left: 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: medium;
+}
+.test2{
+    width: 100%;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+
+

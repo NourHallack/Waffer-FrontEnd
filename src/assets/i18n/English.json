@@ -1,0 +1,57 @@
+{
+    "General":{
+        "Yes" : "Yes",
+        "No" : "No",
+        "Cancel" : "Cancel",
+        "Agree" : "I Agree",
+        "Confirm" : "Confirm"
+    },  
+
+    "Menu" : {
+        "CustomizedPackage" : "Customized Package" , 
+              "Maintenance" : "Maintenance" , 
+              "BestPackagePrice" : "Best Package Price",
+              "Login" : "Login",
+              "RegisterNewSeller" : "Register New Seller "           
+    },
+
+    "Search" : { 
+        "SearchAProduct" : "Search a product"
+    },
+
+    "NewSellerRegister": { 
+        "Rules" : {
+            "Title" : "Register New Seller Form",
+            "Introduction": "To sign up as a seller in Waffer, please follow the steps below, keeping in mind that y,our request will be verified by the administrator and you will be notified by e-mail if all conditions are met:" ,
+            "Rule1": "Create a seller account and provide the required information (name, e-mail) to move to the next stage.",
+            "Rule2": "Set up the seller account, where we must provide the following information: ",
+            "Rule2.1": "Business name as it is registered on the trade license.",
+            "Rule2.2": "Business address: city, area.",
+            "Rule2.3": "Branch or store name: the store name that will appear on the website.",
+            "Rule2.4": "Phone number.",
+            "Rule3": "Check your address again, and then add your ways of communicating.",
+            "Rule4": "Include product and brand information.",
+            "Rule5": "Choose the product you want to sell."
+
+        },
+        "Form" : {
+            "CompanyName" : "Company Name",
+            "CompanyEmail" : "Company Email" ,
+            "CompanyContactPhone" : "Company Contact Phone Number",
+            "CompanyCustomerServicePhone" : "Customer Service Phone Number",
+            "CompanyLocation" : " Company Location",
+            "CompanyPhysicalStore" : "Do you have a physical Store ?",
+            "PhysicalStoreHintYes":"(City - Street)",
+            "PhysicalStoreHintNo" : "(City)",
+            "CompanyProductsDescription" : "What Product will be offered in your elecronic Waffer store ?"
+        }
+       
+
+    },
+
+    "CompareProducts" : {
+        "Title" : "Product Comparsion",
+         "GoToComparePageButton" : "Go to Products Comarsion Page"
+
+    }
+}

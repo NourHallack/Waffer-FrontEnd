@@ -1,0 +1,71 @@
+<p>
+    <mat-toolbar class="mat-elevation-z8">
+
+      <!-- <a class="ApplicationLogo">
+        <img style="width: 200px; height: 100px;" src="../../assets/imgs/logo1.png">
+      </a> -->
+      <span style= "font-family: 'Tajawal', sans-serif; margin-left: 0; ">Waffer E-Commerce Application</span>
+
+      <div class="example-spacer"></div>
+      
+      <a mat-button >
+        <mat-icon>create</mat-icon>{{'Menu.CustomizedPackage' | translate}}
+      </a>
+     
+      <a mat-button routerLink="maintence">
+        <mat-icon>engineering</mat-icon> {{'Menu.Maintenance' | translate}}
+      </a>
+      
+      <a mat-button>
+        <mat-icon>attach_money</mat-icon>{{'Menu.BestPackagePrice' | translate}}
+      </a>
+      
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon matBadge="10" matBadgeColor="warn" matBadgeSize="small">favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon matBadge="7" matBadgeColor="warn"  matBadgeSize="small">shopping_cart</mat-icon>
+      </button>
+
+      <!-- Compare Items -->
+      <button mat-icon-button [matMenuTriggerFor]="compareMenu" class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon matBadge="{{compareProductList.length}}" matBadgeColor="warn"  matBadgeSize="small">compare</mat-icon>
+      </button>
+      <mat-menu #compareMenu="matMenu">
+        <div class="actionTitle">{{'CompareProducts.Title' | translate}}</div>
+        
+        <!-- ng Repeat for Items to compare -->
+        <ng-container *ngFor="let product of compareProductList">
+          <div class="product">
+            <div><a class="test"><img class="productImage" src={{product.image}}></a></div>
+            <div class="productDescription">
+              <div class="test2">
+                <p style=" flex-grow: 1;">{{product.name}}</p>
+                <div (click)="deleteProductFromCompareList(product.id)"><mat-icon style="color: var(--primary-color);">delete</mat-icon></div>
+              </div>
+              <a>{{product.description}}</a>
+            </div>
+          </div>
+        </ng-container>
+        <!-- ng-If we have more than 2 products to compare -->
+        <button mat-button class="actionButton" routerLink="comparePage" >{{'CompareProducts.GoToComparePageButton' | translate}}</button>
+       
+        <!-- Choose At least two products to compare -->
+      </mat-menu>
+
+      <div class="example-spacer"></div>
+
+      <a mat-raised-button (click)="openLoginSignInDialog()">{{'Menu.Login' | translate}}</a>
+      <a mat-button (click) = "openNewSellerDialog()">{{'Menu.RegisterNewSeller' | translate}}</a>
+
+      <div class="example-spacer"></div>
+      
+      <mat-icon>language</mat-icon>
+      <mat-form-field >      
+        <mat-select [(value)]= "selectedLanguage" (selectionChange)="changeLanguage($event.value)">
+          <mat-option *ngFor="let language of languages" [value]="language">{{language}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-toolbar>
+</p>

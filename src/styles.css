@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+html, body { height: 100%; font-family: 'Tajawal', sans-serif; }
+body { margin: 0;  font-family: 'Tajawal', sans-serif;}
+
+:root{
+
+    --primary-color: #2b6777;
+    --secondary-color: #c8d8e4 ;
+    --background-color: #ffff;
+    --accent-color: #52ab98;
+}

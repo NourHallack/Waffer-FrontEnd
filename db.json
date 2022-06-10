@@ -1,0 +1,16 @@
+{
+  "sellerRegisterRequest": [
+  ],
+  "compareProductList" : [
+    {"id": 1 , 
+      "name" : "LG Vacuum Canister" , 
+      "description" : "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
+      "image" : "../../assets/imgs/productImg.jpg"
+    },
+    {"id": 2 , 
+      "name" : "Beko Dishwasher 5 Programs" , 
+      "description" : "Beko Dishwasher 5 Programs, 13 Place Setting, 2 Racks, Low Water And Energy Usage, Quick Programs, Half Load Function, White Color.",
+      "image" : "../../assets/imgs/bekoWasher.png"
+    }
+  ]
+}

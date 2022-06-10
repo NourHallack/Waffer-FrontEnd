@@ -1,0 +1,80 @@
+<h2 mat-dialog-title class="rules">{{'NewSellerRegister.Rules.Title' | translate}}</h2>
+
+<mat-dialog-content *ngIf="displayRules" class="mat-typography rules">
+    <h4 class="rules">{{'NewSellerRegister.Rules.Introduction' | translate}}</h4>
+
+    <ul>
+        <li>{{'NewSellerRegister.Rules.Rule1' | translate}}</li>
+        <li>{{'NewSellerRegister.Rules.Rule2' | translate}}</li>
+        <ul>
+            <li>{{'NewSellerRegister.Rules.Rule2.1' | translate}}</li>
+            <li>{{'NewSellerRegister.Rules.Rule2.2' | translate}}</li>
+            <li>{{'NewSellerRegister.Rules.Rule2.3' | translate}}</li>
+            <li>{{'NewSellerRegister.Rules.Rule2.4' | translate}}</li>
+        </ul>
+        <li>{{'NewSellerRegister.Rules.Rule3' | translate}}</li>
+        <li>{{'NewSellerRegister.Rules.Rule4' | translate}}</li>
+        <li>{{'NewSellerRegister.Rules.Rule5' | translate}}</li>
+    </ul>
+
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="!displayRules" class="mat-typography">
+    <form [formGroup]="newSellerForm">
+        <mat-form-field appearance="outline">
+            <mat-label>{{'NewSellerRegister.Form.CompanyName' | translate}}</mat-label>
+            <input formControlName="companyName" matInput>
+            <mat-icon matSuffix>store</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>{{'NewSellerRegister.Form.CompanyEmail' | translate}}</mat-label>
+            <input matInput formControlName="companyEmail" placeholder="waffer@example.com" [formControl]="email"
+                required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>{{'NewSellerRegister.Form.CompanyContactPhone' | translate}}</mat-label>
+            <mat-icon matSuffix>phone</mat-icon>
+            <input formControlName="companyPhone" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>{{'NewSellerRegister.Form.CompanyCustomerServicePhone' | translate}}</mat-label>
+            <mat-icon matSuffix>support_agent</mat-icon>
+            <input formControlName="companyCustomerServicePhone" matInput>
+        </mat-form-field>
+        <label id="hasPhysicalStoreLabel">
+            <h4 class="rules">{{'NewSellerRegister.Form.CompanyPhysicalStore' | translate}}</h4>
+        </label>
+        <mat-radio-group formControlName="companyHasPhysicalStore">
+            <mat-radio-button value="true">{{'General.Yes' | translate}}</mat-radio-button>
+            <mat-radio-button value="false">{{'General.No' | translate}}</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+            <mat-label>{{'NewSellerRegister.Form.CompanyLocation' | translate}}</mat-label>
+            <mat-icon matSuffix>place</mat-icon>
+            <input matInput formControlName="companyLocation">
+            <mat-hint *ngIf="hasPhysicalStore()">{{'NewSellerRegister.Form.PhysicalStoreHintYes' | translate}}</mat-hint>
+            <mat-hint *ngIf="!hasPhysicalStore()">{{'NewSellerRegister.Form.PhysicalStoreHintNo' | translate}}</mat-hint>
+        </mat-form-field>
+        <label>
+            <h4 class="rules">{{'NewSellerRegister.Form.CompanyProductsDescription' | translate}}</h4>
+        </label>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <textarea matInput formControlName="companyOfferedProduct"></textarea>
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" *ngIf="displayRules">
+    <button mat-button mat-dialog-close>{{'General.Cancel' | translate}}</button>
+    <button mat-button (click)="presentForm()" cdkFocusInitial>{{'General.Agree' | translate}}</button>
+</mat-dialog-actions>
+
+<mat-dialog-actions align="end" *ngIf="!displayRules">
+    <button mat-button mat-dialog-close>{{'General.Cancel' | translate}}</button>
+    <button mat-button mat-raised-button (click)="sendRegisterSellerRequest()">{{'General.Confirm' | translate}}</button>
+</mat-dialog-actions>
