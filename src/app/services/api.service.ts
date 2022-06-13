@@ -36,7 +36,7 @@ export class ApiService {
     return this.http.post<any>("http://localhost:3000/productList", data );
   }
 
-  getProductList(data : any){   // Client Side 
+  getProductList(){   // Client Side 
     return this.http.get<any>("http://localhost:3000/productList");
   }
 

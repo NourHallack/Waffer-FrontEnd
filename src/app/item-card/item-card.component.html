@@ -1,24 +1,23 @@
 <div class=" container card">
     <div class="productTitle row">
-        <img class="productManufacture col-md-3" src="../../assets/imgs/LG_Loge.png">
+        <img class="productManufacture col-md-3" src={{product.productManufacture}}>
         <div class="col-md-6"></div>
-        <img class="productSeller col-md-3  right" src="../../assets/imgs/sbitany_logo.png">
-        <h5 class="">LG Vacuum Canister</h5>
+        <img class="productSeller col-md-3  right" src={{product.productSeller}}>
+        <h5 class="">{{product.productName}}</h5>
     </div>
 
     <div class="productImage">
-        <img src="../../assets/imgs/productImg.jpg">
+        <img src={{product.productImage}}>
     </div>
-
     
     <div class="productDescription">
-        <p>LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter</p>
-        <p>Red</p>
+        <p>{{product.productDescription}}</p>
+        <p>{{product.productColor}}</p>
     </div>
 
     <div class="price row">
-        <span class="newPrice col-5">₪999</span>
-        <span class="oldPrice col-5">₪1,463</span>
+        <span class="newPrice col-5">₪{{product.newPrice}}</span>
+        <span class="oldPrice col-5">₪{{product.oldPrice}}</span>
     </div>
 
     <div class="productAction">

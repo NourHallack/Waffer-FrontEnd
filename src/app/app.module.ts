@@ -38,6 +38,8 @@ import { NewSellerDialogComponent } from './new-seller-dialog/new-seller-dialog.
 import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
 import { CompareProductPageComponent } from './compare-product-page/compare-product-page.component';
 import { CustomizePackageDialogComponent } from './customize-package-dialog/customize-package-dialog.component';
+import { MaintaincePageComponent } from './maintaince-page/maintaince-page.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 
 // AoT requires an exported function for factories
@@ -54,7 +56,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewSellerDialogComponent,
     LoginSignInComponent,
     CompareProductPageComponent,
-    CustomizePackageDialogComponent
+    CustomizePackageDialogComponent,
+    MaintaincePageComponent,
+    ResultPageComponent
   ],
   imports: [
     BrowserModule,

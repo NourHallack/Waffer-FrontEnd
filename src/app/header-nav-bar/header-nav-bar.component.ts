@@ -18,11 +18,11 @@ export class HeaderNavBarComponent implements OnInit {
   selectedLanguage : String ;
 
   public compareProductList : any ;
-  public compareListLength : String = "" ;
+  
 
   constructor(private http: HttpClient ,
               private dialog : MatDialog,
-              private api : ApiService, ) { 
+              private api : ApiService ) { 
 
     this.selectedLanguage = localStorage.getItem('lang') || "English";
   }

@@ -92,6 +92,36 @@
     font-weight: bold;
 }
 
+.p-message.p-message-warn {
+    background: #fff3cd;
+    border: solid #ffeeba;
+    border-width: 1px;
+    color: #856404;
+    margin: 1rem 0;
+    border-radius: 4px;
+}
+
+.p-message.p-message-warn .p-message-icon {
+    color: #856404;
+}
+
+.p-message .p-message-wrapper {
+    padding: 1rem 1.25rem;
+}
+
+.p-message-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.p-message .p-message-summary {
+    font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+}
+.p-message .p-message-detail {
+    margin-left: 0.5rem;
+    font-family: 'Tajawal', sans-serif;
+}
 
 
 

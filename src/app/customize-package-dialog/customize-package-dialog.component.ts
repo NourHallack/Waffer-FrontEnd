@@ -30,7 +30,7 @@ export class CustomizePackageDialogComponent implements OnInit {
     this.customizedPackageForm = this.formBuilder.group({
       houseSpace : ['' , Validators.required],
       noOfFamilyMember : [1 , Validators.required],
-      budget : [ 10000 , Validators.required],
+      budget : [ 5000 , Validators.required],
       requiredApplicances  : ['' , Validators.required],
       powerConsumption : ['' , '']
     })
