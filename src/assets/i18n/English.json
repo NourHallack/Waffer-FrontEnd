@@ -53,5 +53,22 @@
         "Title" : "Product Comparsion",
          "GoToComparePageButton" : "Go to Products Comarsion Page"
 
+    },
+
+    "CustomizePackage" : {
+        "Dialog": {
+            "Title": "Customize your Package",
+            "Introduction" :"If you need assistance choosing which electronic appliances are best for your home, please provide the following information and we will select what is best for you:",
+            "HouseSpaceIntroduction" : "To know the appliances size that is appropriate for your home, please enter your house space in m",
+            "HouseSpace": "House space",
+            "FamilyMemberIntroduction" : "To calculate the capacity of the appliances, please enter the number of your family members:", 
+            "FamilyMember" : "Number of family members",
+            "PriceRangeIntroduction" :"To get a package with suitable, please enter your budget average:",
+            "PriceRange" :"Budget",
+            "DevicesIntroduction" :  "Please select the appliances that you require",
+            "RequiredAppliances" : "Required Appliances" ,
+            "EnviromentIntroduction" : "Choose the appliance's power consumption, environmentally friendly appliance, average consumption appliance:",
+            "GeneratePackageButton" : "Generate my Package"
+        }
     }
 }

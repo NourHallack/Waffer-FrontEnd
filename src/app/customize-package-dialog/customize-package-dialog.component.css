@@ -1,0 +1,83 @@
+mat-form-field {
+    width: 90%;
+    padding-bottom: 5px;
+    font-family: 'Tajawal', sans-serif !important ;
+    font-size: medium;
+    color: var(--primary-color);
+    
+}
+
+mat-icon {
+    color: var(--primary-color);
+}
+
+.rules, p, mat-select , mat-option {
+    font-family: 'Tajawal', sans-serif;
+    color: black;
+}
+
+input[type=number]::-webkit-outer-spin-button, 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+}
+
+.mat-slider-horizontal {
+    width: 300px;
+
+ }
+
+ ::ng-deep.mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
+    height: 20px;
+    border-radius: 10px
+  }
+
+ ::ng-deep .mat-slider.mat-accent .mat-slider-track-fill, 
+           .mat-slider.mat-accent .mat-slider-thumb, 
+           .mat-slider.mat-accent .mat-slider-thumb-label {
+    background-color:  var(--primary-color) !important;
+
+    
+}
+
+
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: var(--primary-color)  !important;
+}
+
+::ng-deep .mat-slider-thumb-label {
+    background-color: var(--primary-color) !important;
+    font-size:x-large;
+    font-family: 'Tajawal', sans-serif;
+    color: white;
+    border: solid 2px gray;
+
+
+}
+
+::ng-deep .mat-slider-thumb {
+    background-color: var(--primary-color)  !important;
+    
+    
+}
+
+.mat-radio-group {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0;
+    align-items: flex-start;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.mat-radio-button {
+    margin: 5px;
+    font-family: 'Tajawal', sans-serif;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    background-color: var(--primary-color);
+    
+}
+
+::ng-deep  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: var(--primary-color);
+}

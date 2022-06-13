@@ -10,14 +10,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
+import {SliderModule} from 'primeng/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +37,7 @@ import { ItemCardComponent } from './item-card/item-card.component';
 import { NewSellerDialogComponent } from './new-seller-dialog/new-seller-dialog.component';
 import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
 import { CompareProductPageComponent } from './compare-product-page/compare-product-page.component';
+import { CustomizePackageDialogComponent } from './customize-package-dialog/customize-package-dialog.component';
 
 
 // AoT requires an exported function for factories
@@ -48,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ItemCardComponent,
     NewSellerDialogComponent,
     LoginSignInComponent,
-    CompareProductPageComponent
+    CompareProductPageComponent,
+    CustomizePackageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +77,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatCheckboxModule,
     MatAutocompleteModule,
     MatMenuModule,
+    MatSliderModule,
+    SliderModule,
+    MatButtonToggleModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

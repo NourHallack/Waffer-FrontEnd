@@ -1,0 +1,72 @@
+<h2 mat-dialog-title class="rules">{{'CustomizePackage.Dialog.Title' | translate}}</h2>
+
+<mat-dialog-content class="mat-typography">
+    <h4 class="rules">{{'CustomizePackage.Dialog.Introduction' | translate}}</h4>
+    <form [formGroup]="customizedPackageForm">
+
+
+        <ul>
+            <!-- House Space -->
+            <li>
+                <p>{{'CustomizePackage.Dialog.HouseSpaceIntroduction' | translate}}<sup>2</sup>:</p>
+                <mat-form-field appearance="outline">
+                    <mat-label>{{'CustomizePackage.Dialog.HouseSpace' | translate}}</mat-label>
+                    <input formControlName="houseSpace" matInput (focus)="false">
+                    <mat-icon matSuffix>house</mat-icon>
+                </mat-form-field>
+            </li>
+            <!-- Family Members -->
+            <li>
+                <p>{{'CustomizePackage.Dialog.FamilyMemberIntroduction' | translate}}</p>
+                <mat-form-field appearance="outline">
+                    <mat-label>{{'CustomizePackage.Dialog.FamilyMember' | translate}}</mat-label>
+                    <input formControlName="noOfFamilyMember" matInput type="number" min="1" max="15">
+                    <mat-icon matSuffix>family_restroom</mat-icon>
+                </mat-form-field>
+            </li>
+
+            <!-- Price Range -->
+            <li>
+                <p>{{'CustomizePackage.Dialog.PriceRangeIntroduction' | translate}}</p>
+                <p>{{'CustomizePackage.Dialog.PriceRange' | translate}} : {{this.customizedPackageForm.value.budget}} ₪
+                </p>
+                <mat-slider formControlName="budget" thumbLabel [displayWith]="formatLabel"
+                    [tickInterval]="getSliderTickInterval()" min="100" max="50000" value="10000" step="1000">
+                </mat-slider>
+            </li>
+
+            <!-- Devices  -->
+            <li>
+                <p>{{'CustomizePackage.Dialog.DevicesIntroduction' | translate}}</p>
+                <mat-form-field appearance="outline">
+                    <mat-label>{{'CustomizePackage.Dialog.RequiredAppliances' | translate}}</mat-label>
+                    <mat-select multiple formControlName="requiredApplicances">
+                        <mat-option *ngFor="let appliance of applianceList" [value]="appliance">{{appliance}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-icon matSuffix>blender</mat-icon>
+                </mat-form-field>
+            </li>
+
+            <!--  -->
+            <li>
+                <p>{{'CustomizePackage.Dialog.EnviromentIntroduction' | translate}}</p>
+                    <mat-radio-group formControlName="powerConsumption">
+                        <mat-radio-button value="A">A</mat-radio-button>
+                        <mat-radio-button value="B">B</mat-radio-button>
+                        <mat-radio-button value="C">C</mat-radio-button>
+                        <mat-radio-button value="D">D</mat-radio-button>
+                      </mat-radio-group>
+     
+            </li>
+
+        </ul>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>{{'General.Cancel' | translate}}</button>
+    <button mat-button mat-raised-button (click)="generatePackage()">{{'CustomizePackage.Dialog.GeneratePackageButton' |
+        translate}}</button>
+</mat-dialog-actions>

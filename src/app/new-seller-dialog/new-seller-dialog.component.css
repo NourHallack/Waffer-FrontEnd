@@ -8,14 +8,9 @@ mat-form-field {
     padding-bottom: 5px;
     font-family: 'Tajawal', sans-serif !important ;
     font-size: medium;
+    color: var(--primary-color);
     
 }
-
-.mat-form-field  {
-    color: var(--primary-color);
-}
-
-
 
 .mat-radio-group {
     display: flex;
@@ -35,5 +30,4 @@ mat-icon {
 .rules{
     font-family: 'Tajawal', sans-serif;
     color: black;
-
 }

@@ -3,9 +3,6 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
 
-
-//TO-DO (  Translation - Radio Button "Yes change Hint")
-
 @Component({
   selector: 'app-new-seller-dialog',
   templateUrl: './new-seller-dialog.component.html',
@@ -14,7 +11,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 export class NewSellerDialogComponent implements OnInit {
 
   displayRules: boolean  = true ;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  Email = new FormControl('', [Validators.required, Validators.email]);
 
   newSellerForm !: FormGroup ;
 
@@ -25,13 +22,13 @@ export class NewSellerDialogComponent implements OnInit {
   ngOnInit(): void {
 
     this.newSellerForm = this.formBuilder.group({
-      companyName : ['' , Validators.required],
-      companyEmail : ['' , Validators.required],
-      companyPhone : ['' , Validators.required],
-      companyCustomerServicePhone: ['' , ''],
-      companyHasPhysicalStore : ['' , Validators.required],
-      companyLocation : ['' , Validators.required],
-      companyOfferedProduct : ['' , Validators.required]
+      name : ['' , Validators.required],
+      email : ['' , Validators.required],
+      contactPhoneNumber  : ['' , Validators.required],
+      customerServicePhoneNumber : ['' , ''],
+      hasStore : ['' , Validators.required],
+      address : ['' , Validators.required],
+      description : ['' , Validators.required]
     })
   }
 
@@ -40,17 +37,19 @@ export class NewSellerDialogComponent implements OnInit {
   }
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.Email.hasError('required')) {
       return 'You must enter a value';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.Email.hasError('Email') ? 'Not a valid email' : '';
   }
 
   sendRegisterSellerRequest(){
 
+    this.newSellerForm.value.hasStore= this.newSellerForm.value.hasStore == 'true' ? true : false ;
+
     if(this.newSellerForm.valid){
-      this.api.postRegisterNewSeller(this.newSellerForm.value)
+      this.api.postRegisterNewSeller(this.newSellerForm.value , "1234")
       .subscribe(
         { next:(res) => {
             alert("New Seller Register Request was sent Successfully");
@@ -68,7 +67,7 @@ export class NewSellerDialogComponent implements OnInit {
   }
 
   hasPhysicalStore(){
-    return (this.newSellerForm.value.companyHasPhysicalStore.toLowerCase() === 'true'); ;
+    return (this.newSellerForm.value.hasStore.toLowerCase() === 'true'); ;
   }
 
 
