@@ -1,1 +1,17 @@
-<p>maintaince-page works!</p>
+
+
+<div class="maintencePage" >
+    <h1 class="title"> <mat-icon style="color: var(--primary-color);">engineering</mat-icon> {{'Menu.MaintenanceTitle' | translate}}</h1>
+    <div class="maintenance card" *ngFor="let maintenance of maintenanceList">
+        <div><a class="test"><img class="maintenanceImage" src={{maintenance.logo}}></a></div>
+        <div class="productDescription">
+            <div class="test2">
+                <p style="flex-grow: 1;">{{maintenance.name}} - {{maintenance.field}}</p>
+            </div>
+            <p *ngIf="maintenance.address"> <mat-icon style="color: var(--primary-color);">location_on</mat-icon>  {{maintenance.address}}</p>
+            <p> <mat-icon style="color: var(--primary-color);">call</mat-icon>  {{maintenance.phone}}</p>
+            <p *ngIf="maintenance.email"> <mat-icon style="color: var(--primary-color);">email</mat-icon>  {{maintenance.email}}</p>
+
+        </div>
+    </div>
+</div>

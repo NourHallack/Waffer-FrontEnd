@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
 import { CustomizePackageDialogComponent } from '../customize-package-dialog/customize-package-dialog.component';
 import { LoginSignInComponent } from '../login-sign-in/login-sign-in.component';
 import { NewSellerDialogComponent } from '../new-seller-dialog/new-seller-dialog.component';
@@ -22,7 +23,8 @@ export class HeaderNavBarComponent implements OnInit {
 
   constructor(private http: HttpClient ,
               private dialog : MatDialog,
-              private api : ApiService ) { 
+              private api : ApiService,
+              private cookie: CookieService ) { 
 
     this.selectedLanguage = localStorage.getItem('lang') || "English";
   }
@@ -65,10 +67,37 @@ export class HeaderNavBarComponent implements OnInit {
 
   //Compare list 
   getCompareList() {
-    return this.compareProductList ;
+
+    //Get the Id of Compare prodcut list from cookies
+    var cookiesCompareProductIdList : string = this.cookie.get('compareProductIdList');
+    let CompareProductIdList = cookiesCompareProductIdList.split("-");
+
+    //Get from Api Product of the Ids and add them to Compare product list 
+    for (let i = 0; i < CompareProductIdList.length; i++) {
+      var product = {};
+      this.api.getProductById(i).subscribe(res =>{ product = res ; });
+      this.compareProductList.push({...product});
+    }
+
   }
 
   deleteProductFromCompareList(productId: any ) {
+
+    //Get the Id of Compare prodcut list from cookies
+    var cookiesCompareProductIdList : string = this.cookie.get('compareProductIdList');
+
+    if (cookiesCompareProductIdList.length != 1 ){
+          cookiesCompareProductIdList = cookiesCompareProductIdList.replace(productId+"-" , "");
+    }else {
+           cookiesCompareProductIdList = cookiesCompareProductIdList.replace(productId , "");
+    }
+
+    //Change Compare List 
+    for (let i = 0; i < this.compareProductList.length;  i++) {
+      this.compareProductList.remove(i);
+    }
+    this.getCompareList();
+    
 
   }
 

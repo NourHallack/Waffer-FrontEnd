@@ -1,0 +1,70 @@
+.maintencePage{
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+    
+    
+}
+
+.title{
+
+    font-family: 'Tajawal', sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+
+}
+
+.maintenance{
+    width: 700px ;
+    height: 180px ;
+    border-radius: 6px;
+    border-width: medium;
+    border-color: var(--primary-color);
+    padding-left: 40px;
+
+    display: flex;
+    flex-flow: row;
+
+    margin-bottom: 20px;
+     
+}
+
+.test{
+    width: 150px;
+    height: 150px;
+    display: block;
+    position: unset;
+    text-align: center;
+    margin-right: 30px;
+    align-items: flex-start;
+}
+
+
+.maintenanceImage{
+    width: 200px;
+    height: 200px;
+    position: unset;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 10px;
+}
+
+.productDescription{
+    flex-grow: 1;
+    padding-left: 10px;
+    padding-top: 20px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: medium;
+    width: 400px;
+    margin-right: 40px;
+
+}
+
+.test2{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}

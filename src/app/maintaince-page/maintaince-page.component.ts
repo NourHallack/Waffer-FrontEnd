@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-maintaince-page',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaintaincePageComponent implements OnInit {
 
-  constructor() { }
+  public maintenanceList : any ;
+
+  constructor(private http: HttpClient ,
+              private api : ApiService) { }
 
   ngOnInit(): void {
+
+    this.api.getMaintenanceList()
+    .subscribe( res =>  { this.maintenanceList = res ; } );
   }
+
+
 
 }

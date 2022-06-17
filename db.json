@@ -1,38 +1,83 @@
 {
-  "sellerRegisterRequest": [
-  ],
-  "compareProductList" : [
-    {"id": 1 , 
-      "name" : "LG Vacuum Canister" , 
-      "description" : "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
-      "image" : "../../assets/imgs/productImg.jpg"
+  "sellerRegisterRequest": [],
+  "compareProductList": [
+    {
+      "id": 1,
+      "name": "LG Vacuum Canister",
+      "description": "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
+      "image": "../../assets/imgs/productImg.jpg"
     },
-    {"id": 2 , 
-      "name" : "Beko Dishwasher 5 Programs" , 
-      "description" : "Beko Dishwasher 5 Programs, 13 Place Setting, 2 Racks, Low Water And Energy Usage, Quick Programs, Half Load Function, White Color.",
-      "image" : "../../assets/imgs/bekoWasher.png"
+    {
+      "id": 2,
+      "name": "Beko Dishwasher 5 Programs",
+      "description": "Beko Dishwasher 5 Programs, 13 Place Setting, 2 Racks, Low Water And Energy Usage, Quick Programs, Half Load Function, White Color.",
+      "image": "../../assets/imgs/bekoWasher.png"
     }
-  ], 
-  "productList" : [
-    {"productManufacture": "../../assets/imgs/LG_Loge.png" ,
-     "productSeller" : "../../assets/imgs/sbitany_logo.png" ,
-      "productName" : "LG Vacuum Canister",
-      "productImage" : "../../assets/imgs/productImg.jpg",
-      "productDescription" : "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
-      "productColor" : "Red",
-      "newPrice" : 999,
-      "oldPrice" : 1463
+  ],
+  "productList": [
+    {
+      "productManufacture": "../../assets/imgs/LG_Loge.png",
+      "productSeller": "../../assets/imgs/sbitany_logo.png",
+      "productName": "LG Vacuum Canister",
+      "productImage": "../../assets/imgs/productImg.jpg",
+      "productDescription": "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
+      "productColor": "Red",
+      "newPrice": 999,
+      "oldPrice": 1463,
+      "id": 1
     },
-    {"productManufacture": "../../assets/imgs/LG_Loge.png" ,
-      "productSeller" : "../../assets/imgs/sbitany_logo.png" ,
-       "productName" : "LG Vacuum Canister",
-       "productImage" : "../../assets/imgs/productImg.jpg",
-       "productDescription" : "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
-       "productColor" : "Yellow",
-       "newPrice" : "2000",
-       "oldPrice" : "4000"
-     }
-     
-
+    {
+      "productManufacture": "../../assets/imgs/LG_Loge.png",
+      "productSeller": "../../assets/imgs/sbitany_logo.png",
+      "productName": "LG Vacuum Canister",
+      "productImage": "../../assets/imgs/productImg.jpg",
+      "productDescription": "LG Vacuum Canister 2000W VK7942NHAU 1.2 Liter",
+      "productColor": "Yellow",
+      "newPrice": "2000",
+      "oldPrice": "4000",
+      "id":2
+    }
+  ],
+  "maintenanceList": [
+    {
+      "name": "سبيتاني",
+      "field": "مركز الصيانة",
+      "logo": "../../assets/imgs/sbitany_logo.png",
+      "address": "المنطقة الصيناعية، بيتونيا، رام الله والبيرة",
+      "phone": "1700 550 110",
+      "email": ""
+    },
+    {
+      "name": " مجموعة مسلماني",
+      "field": "مركز الصيانة",
+      "logo": "../../assets/imgs/Maintenance/Maslamani.PNG",
+      "address": "مدينة أريحا الصناعية الزراعية، أريحا، فلسطين",
+      "phone": "111 23 23 20",
+      "email": "info@maslamani.com"
+    },
+    {
+      "name": "هوم بلازا ",
+      "field": "مركز الصيانة",
+      "logo": "../../assets/imgs/Maintenance/Plaza.PNG",
+      "address": "شارع الجامعة، الخليل",
+      "phone": "02 222 8110",
+      "email": ""
+    },
+    {
+      "name": "محمد الشرباتي",
+      "field": "فني تصليح ثلاجات ",
+      "logo": "../../assets/imgs/Maintenance/Sharabati.PNG",
+      "address": "",
+      "phone": "00970595678546",
+      "email": ""
+    },
+    {
+      "name": "شركة سي جي موبايل",
+      "field": "تصليح هواتف خلوية",
+      "logo": "../../assets/imgs/Maintenance/Unknown.png",
+      "address": "شارع ركب, رام الله",
+      "phone": "0569311311",
+      "email": ""
+    }
   ]
 }

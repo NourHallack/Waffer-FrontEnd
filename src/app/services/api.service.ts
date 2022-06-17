@@ -44,6 +44,14 @@ export class ApiService {
     return this.http.get<any>("http://localhost:3000/compareProductList");
   }
 
+  getMaintenanceList(){
+    return this.http.get<any>("http://localhost:3000/maintenanceList");
+  }
+
+  getProductById(i : any ){
+    return this.http.get<any>("http://localhost:3000/");
+  }
+
 
 
 

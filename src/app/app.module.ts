@@ -21,18 +21,17 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
-import {SliderModule} from 'primeng/slider';
+
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderNavBarComponent } from './header-nav-bar/header-nav-bar.component';
-
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CookieService } from 'ngx-cookie-service';
+
+import { AppComponent } from './app.component';
+import { HeaderNavBarComponent } from './header-nav-bar/header-nav-bar.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { NewSellerDialogComponent } from './new-seller-dialog/new-seller-dialog.component';
 import { LoginSignInComponent } from './login-sign-in/login-sign-in.component';
@@ -82,7 +81,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatAutocompleteModule,
     MatMenuModule,
     MatSliderModule,
-    SliderModule,
     MatButtonToggleModule,
     TranslateModule.forRoot({
       loader: {
@@ -92,7 +90,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -11,6 +11,7 @@
     "Menu" : {
         "CustomizedPackage" : "Customized Package" , 
               "Maintenance" : "Maintenance" , 
+              "MaintenanceTitle" : "Maintenance Section",
               "BestPackagePrice" : "Best Package Price",
               "Login" : "Login",
               "RegisterNewSeller" : "Register New Seller "           
