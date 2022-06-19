@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { HeaderNavBarComponent } from '../header-nav-bar/header-nav-bar.component';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-item-card',
@@ -12,7 +14,8 @@ export class ItemCardComponent implements OnInit {
 
   public compareProductList: any;
 
-  constructor(private cookie: CookieService) { }
+  constructor(private cookie: CookieService,
+              private header : HeaderNavBarComponent) { }
 
   ngOnInit(): void {
   }
@@ -32,27 +35,38 @@ export class ItemCardComponent implements OnInit {
     var cookiesCompareProductIdList : string = " " ;
     cookiesCompareProductIdList =  this.cookie.get('compareProductIdList');
 
-    //Cannot Add more than 3 product (x-x-x)
-    if(cookiesCompareProductIdList.length == 5){
+    //Cannot Add more than 3 product (x/x) 
+    if(cookiesCompareProductIdList.includes("/")){
       return ;
     }
 
-    //Already Exist return Exist  ?????
+    //Already Exist return Exist
     if(cookiesCompareProductIdList.includes(this.product.id)){
       return ;
     }
 
     if (cookiesCompareProductIdList != ""){  
-      cookiesCompareProductIdList =  cookiesCompareProductIdList + "-" +  (this.product.id);
+      this.header.compareProductListLength = "2";
+      cookiesCompareProductIdList =  cookiesCompareProductIdList + "/" +  (this.product.id);
       this.cookie.set('compareProductIdList', cookiesCompareProductIdList);
     }else {
       cookiesCompareProductIdList = (this.product.id);
       this.cookie.set('compareProductIdList', cookiesCompareProductIdList);
-
+      this.cookie.set('subCategoryId', this.product.subCategoryId);
     }
   
   }
 
-  //Handle not more than 3 products
+
+  /// 1 -  new Price = (oldPrice - ratio* oldPrice)
+  getNewPrice(price:any , saleRatio : any ){
+
+    return (price - (saleRatio * price)/100);
+
+  }
+  //  2-  product Manufacture 
+  getBrandImage(brand : any ){
+     return "../../assets/imgs/brand/"+ brand+".png" ;
+  }
 
 }

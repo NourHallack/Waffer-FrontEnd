@@ -37,7 +37,16 @@ export class ApiService {
   }
 
   getProductList(){   // Client Side 
-    return this.http.get<any>("http://localhost:3000/productList");
+    return this.http.get<any>(this.baseURL +"api/items");
+
+  }
+
+  getProductById(productId : any ){
+    return this.http.get<any>(this.baseURL +`api/items/${productId}`);
+  }
+
+  getFeatureBySubCategoryId (subCategoryId : any){
+    return this.http.get<any>(this.baseURL +`api/subcategories/get-features/${subCategoryId}`);
   }
 
   getCompareList(){
@@ -48,9 +57,7 @@ export class ApiService {
     return this.http.get<any>("http://localhost:3000/maintenanceList");
   }
 
-  getProductById(i : any ){
-    return this.http.get<any>("http://localhost:3000/");
-  }
+  
 
 
 

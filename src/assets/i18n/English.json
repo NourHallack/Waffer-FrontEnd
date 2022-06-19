@@ -12,7 +12,7 @@
         "CustomizedPackage" : "Customized Package" , 
               "Maintenance" : "Maintenance" , 
               "MaintenanceTitle" : "Maintenance Section",
-              "BestPackagePrice" : "Best Package Price",
+              "BestPackagePrice" : "Categories",
               "Login" : "Login",
               "RegisterNewSeller" : "Register New Seller "           
     },
@@ -73,5 +73,15 @@
             "EnviromentIntroduction" : "Choose the appliance's power consumption, environmentally friendly appliance, average consumption appliance:",
             "GeneratePackageButton" : "Generate my Package"
         }
+    },
+
+    "featureName" : {
+        "name" : "Product Name",
+        "saleRatio" : "Sale Ratio %",
+        "color" : "Color",
+        "description" : "Description",
+        "price" : "Price",
+        "brand" : "Brand"
+
     }
 }

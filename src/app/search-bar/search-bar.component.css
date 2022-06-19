@@ -32,7 +32,10 @@
     color:  var(--primary-color) !important;
     opacity: 1!important;
     background-color: white;
+    height: 60px;
 }
+
+
 
 
   

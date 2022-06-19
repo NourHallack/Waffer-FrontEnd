@@ -91,7 +91,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    CookieService
+    CookieService,
+    HeaderNavBarComponent
   ],
   bootstrap: [AppComponent]
 })

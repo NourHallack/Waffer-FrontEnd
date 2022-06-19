@@ -17,7 +17,7 @@
     </a>
 
     <a mat-button>
-      <mat-icon>attach_money</mat-icon>{{'Menu.BestPackagePrice' | translate}}
+      <mat-icon>devices</mat-icon> {{'Menu.BestPackagePrice' | translate}}
     </a>
 
     <span class="example-spacer"></span>
@@ -29,7 +29,7 @@
     </button>
 
     <!-- Compare Items -->
-    <button mat-icon-button [matMenuTriggerFor]="compareMenu" class="example-icon">
+    <button (click)="getCompareList()" [matMenuTriggerFor]="compareMenu" class="example-icon">
       <mat-icon matBadge={{compareProductList.length}} matBadgeColor="warn" matBadgeSize="small">compare</mat-icon>
     </button>
     <mat-menu #compareMenu="matMenu">
@@ -39,7 +39,7 @@
       <!-- ng Repeat for Items to compare -->
       <ng-container *ngFor="let product of compareProductList">
         <div class="product">
-          <div><a class="test"><img class="productImage" src={{product.image}}></a></div>
+          <div><a class="test"><img class="productImage" src={{product.photoLink}}></a></div>
           <div class="productDescription">
             <div class="test2">
               <p style="flex-grow: 1;">{{product.name}}</p>

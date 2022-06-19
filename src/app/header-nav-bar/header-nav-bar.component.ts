@@ -18,7 +18,9 @@ export class HeaderNavBarComponent implements OnInit {
   languages: string[] = ['Arabic','English'];
   selectedLanguage : String ;
 
-  public compareProductList : any ;
+  compareProductListLength : String = "";
+
+  compareProductList : any = [];
   
 
   constructor(private http: HttpClient ,
@@ -27,13 +29,12 @@ export class HeaderNavBarComponent implements OnInit {
               private cookie: CookieService ) { 
 
     this.selectedLanguage = localStorage.getItem('lang') || "English";
+    this.getCompareList ();
+    this.compareProductListLength = this.cookie.get('compareProductIdList').includes("/") ? "2" : 
+                                    this.cookie.get('compareProductIdList') != "" ? "1" : "" ;
   }
 
   ngOnInit(): void { 
-
-    this.api.getCompareList()
-    .subscribe( res =>  { this.compareProductList = res ; } );
-
   }
 
   //Handle Changing the Languages 
@@ -45,7 +46,7 @@ export class HeaderNavBarComponent implements OnInit {
   //Register new Seller
   openNewSellerDialog() {
     this.dialog.open(NewSellerDialogComponent, {
-      width : '30%'
+      width : '40%'
     });
   }
 
@@ -59,7 +60,7 @@ export class HeaderNavBarComponent implements OnInit {
   //Customized Package 
   openCustomizedPackageDialog(){
     this.dialog.open(CustomizePackageDialogComponent, {
-      width : '30%',
+      width : '40%',
       autoFocus: false
     });
 
@@ -67,38 +68,41 @@ export class HeaderNavBarComponent implements OnInit {
 
   //Compare list 
   getCompareList() {
-
     //Get the Id of Compare prodcut list from cookies
     var cookiesCompareProductIdList : string = this.cookie.get('compareProductIdList');
-    let CompareProductIdList = cookiesCompareProductIdList.split("-");
+    if(cookiesCompareProductIdList == ""){
+      return;
+    }
+    let CompareProductIdList = cookiesCompareProductIdList.split("/");
 
     //Get from Api Product of the Ids and add them to Compare product list 
+    this.compareProductList = [];
     for (let i = 0; i < CompareProductIdList.length; i++) {
-      var product = {};
-      this.api.getProductById(i).subscribe(res =>{ product = res ; });
-      this.compareProductList.push({...product});
+      this.api.getProductById(CompareProductIdList[i]).subscribe( res =>  
+      this.compareProductList.push(res));
+      
     }
-
   }
 
   deleteProductFromCompareList(productId: any ) {
 
     //Get the Id of Compare prodcut list from cookies
     var cookiesCompareProductIdList : string = this.cookie.get('compareProductIdList');
+    let CompareProductIdList = cookiesCompareProductIdList.split("/");
 
-    if (cookiesCompareProductIdList.length != 1 ){
-          cookiesCompareProductIdList = cookiesCompareProductIdList.replace(productId+"-" , "");
+    if(CompareProductIdList.length == 1 ){
+      this.cookie.delete('compareProductIdList');
+      this.compareProductListLength = "" ;
+      this.compareProductList = [];
+
+    }else if(CompareProductIdList[0] == productId){
+      this.cookie.set('compareProductIdList' , CompareProductIdList[1]);
+      this.compareProductListLength = "1";
     }else {
-           cookiesCompareProductIdList = cookiesCompareProductIdList.replace(productId , "");
+      this.cookie.set('compareProductIdList' , CompareProductIdList[0]);
+      this.compareProductListLength = "1";
     }
-
-    //Change Compare List 
-    for (let i = 0; i < this.compareProductList.length;  i++) {
-      this.compareProductList.remove(i);
-    }
-    this.getCompareList();
     
-
   }
 
 

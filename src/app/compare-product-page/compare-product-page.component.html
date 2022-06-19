@@ -1,1 +1,35 @@
-<p>compare-product-page works!</p>
+<div class="comparePage" >
+    <h1 class="title"> <mat-icon style="color: var(--primary-color);">compare</mat-icon> {{'CompareProducts.Title' | translate}}</h1>
+    <ng-container>
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead> 
+                        <tr>
+                            <th class ="topic">Feature</th>
+                            <th class ="topic">Product 1</th>
+                            <th class ="topic">Product 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <th class="feature">Image</th>
+                            <th><img class="productImg" src={{compareProductList[0].photoLink}}></th>
+                            <th><img class="productImg" src={{compareProductList[1].photoLink}}></th>
+                        </tr>
+                        <tr *ngFor="let feature of basicFeatureList">
+                            <th class="feature">{{getLabel(feature) | translate}}</th>
+                            <th>{{getFeatureValue(feature, 0)}}</th>
+                            <th>{{getFeatureValue(feature, 1)}}</th>
+                        </tr>
+                        <tr *ngFor="let feature of specialFeatureList">
+                            <th class="feature">{{feature.nameToShow}}</th>
+                            <th>{{getFeatureValue(feature.codeName, 0)}}</th>
+                            <th>{{getFeatureValue(feature.codeName, 1)}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ng-container>
+</div>

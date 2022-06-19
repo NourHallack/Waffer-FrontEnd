@@ -5,7 +5,7 @@
     height: 464px;
     border-radius: 6px;
     border-width: medium;
-    padding: 0;
+    padding: 0px;
 }
 
 .card:hover{
@@ -90,6 +90,10 @@
 .oldPrice{
     color: grey;
     text-decoration: line-through;
+}
+
+.productManufacture{
+   margin: auto;
 }
 
 

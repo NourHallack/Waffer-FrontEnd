@@ -1,0 +1,48 @@
+.comparePage{
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 20px;
+    
+    
+}
+
+.title{
+
+    font-family: 'Tajawal', sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+
+}
+
+.table{
+    font-family: 'Tajawal', sans-serif;
+
+}
+
+.productImg{
+   width: 300px;
+   height: 300px;
+}
+
+.topic{
+    font-weight: bolder;
+    font-size:xx-large;
+    align-self: center;
+}
+
+.feature{
+    font-size:large;
+    color: var(--primary-color);
+}
+
+table {
+    table-layout: fixed;
+}
+  
+  td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
