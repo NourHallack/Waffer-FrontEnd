@@ -39,6 +39,12 @@ import { CompareProductPageComponent } from './compare-product-page/compare-prod
 import { CustomizePackageDialogComponent } from './customize-package-dialog/customize-package-dialog.component';
 import { MaintaincePageComponent } from './maintaince-page/maintaince-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { AddNewProductDialogComponent } from './add-new-product-dialog/add-new-product-dialog.component';
+import { WafferComponent } from './waffer/waffer.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { SellerPageComponent } from './seller-page/seller-page.component';
+import { ProductPendingRequestsComponent } from './product-pending-requests/product-pending-requests.component';
+import { SellerPendingRequestsComponent } from './seller-pending-requests/seller-pending-requests.component';
 
 
 // AoT requires an exported function for factories
@@ -57,7 +63,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     CompareProductPageComponent,
     CustomizePackageDialogComponent,
     MaintaincePageComponent,
-    ResultPageComponent
+    ResultPageComponent,
+    AddNewProductDialogComponent,
+    WafferComponent,
+    AdminPageComponent,
+    SellerPageComponent,
+    ProductPendingRequestsComponent,
+    SellerPendingRequestsComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@
     },
 
     "Search" : { 
-        "SearchAProduct" : "Search a product"
+        "SearchAProduct" : "Search a Product"
     },
 
     "NewSellerRegister": { 
@@ -80,8 +80,14 @@
         "saleRatio" : "Sale Ratio %",
         "color" : "Color",
         "description" : "Description",
-        "price" : "Price",
+        "price" : "Price ₪",
         "brand" : "Brand"
 
+    } ,
+
+    "Admin":{
+        "PendingRequest" :{
+            "Title": " Pending Requests"
+        }
     }
 }

@@ -3,15 +3,15 @@
         <mat-tab label="Sign In">
             <mat-card-content>
                 <form [formGroup]="SignInForm" action="">
-                    <mat-form-field>
-                        <input matInput formControlName ="userEmail" placeholder="Email"  name="email">
+                    <mat-form-field style="margin-top: 20px;">
+                        <input matInput formControlName ="email" placeholder="Email"  name="email">
                         <mat-icon matSuffix>email</mat-icon>
                         <mat-error>
                             Email is required  
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput  formControlName ="userPassword" placeholder="Password" type="password" required minlength="6" name="password">
+                        <input matInput  formControlName ="password" placeholder="Password" type="password" required minlength="6" name="password">
                         <mat-error>
                             Password is required
                         </mat-error>
@@ -29,7 +29,7 @@
         </mat-tab>
         <mat-tab label="Sign Up">
             <mat-card-content>
-                <form action="" [formGroup]="SignUpForm" >
+                <form action="">
                     <mat-form-field>
                         <input matInput formControlName ="userName" placeholder="User Name" required name="username">
                         <mat-icon matSuffix>perm_identity</mat-icon>
@@ -54,15 +54,14 @@
                         <mat-icon matSuffix>lock</mat-icon>
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput placeholder="Re-Enter Password" type="password" required minlength="6"
-                            name="repassword" [formControl]="reEnterPassword" >
+                        <input matInput placeholder="Re-Enter Password" type="password" required minlength="6" >
                         <mat-error>
                             Re-Enter Password is required
                         </mat-error>
                         <!-- <mat-error *ngIf= true>{{getReEnterPasswordCheck()}}</mat-error> -->
                         <mat-icon matSuffix>lock</mat-icon>
                     </mat-form-field>
-                    <button mat-raised-button class="login-button" (click)="signUp()">
+                    <button mat-raised-button class="login-button">
                         Sign Up
                     </button>
                 </form>

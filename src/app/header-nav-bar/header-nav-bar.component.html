@@ -4,7 +4,7 @@
     <!-- <a class="ApplicationLogo">
         <img style="width: 200px; height: 100px;" src="../../assets/imgs/logo1.png">
       </a> -->
-    <span style="font-family: 'Tajawal', sans-serif; margin-left: 0; ">Waffer E-Commerce Application</span>
+    <span routerLink="" style="font-family: 'Tajawal', sans-serif; margin-left: 0; ">Waffer E-Commerce Application</span>
 
     <div class="example-spacer"></div>
 
@@ -21,9 +21,42 @@
     </a>
 
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="favoriteMenu" aria-label="Example icon-button with heart icon">
       <mat-icon matBadge="10" matBadgeColor="warn" matBadgeSize="small">favorite</mat-icon>
     </button>
+    <mat-menu #favoriteMenu="matMenu">
+
+      <div class="actionTitle">{{'CompareProducts.Title' | translate}}</div>
+      <!-- ng Repeat for Items to compare -->
+      <ng-container *ngFor="let product of compareProductList">
+        <div class="product">
+          <div><a class="test"><img class="productImage" src={{product.photoLink}}></a></div>
+          <div class="productDescription">
+            <div class="test2">
+              <p style="flex-grow: 1;">{{product.name}}</p>
+              <div (click)="deleteProductFromCompareList(product.id)">
+                <mat-icon style="color: var(--primary-color);">delete</mat-icon>
+              </div>
+            </div>
+            <a>{{product.description}}</a>
+          </div>
+        </div>
+      </ng-container>
+      <!-- ng-If we have more than 2 products to compare -->
+      <button *ngIf=" compareProductList.length > 1" mat-button class="actionButton" routerLink="comparePage">{{'CompareProducts.GoToComparePageButton' |
+        translate}}</button>
+
+      <!-- <-- Choose At least two products to compare -->
+      <div role="alert" class="p-message p-message-warn" *ngIf="compareProductList.length < 2">
+        <div class="p-message-wrapper">
+          <mat-icon class="p-message-icon">report_problem</mat-icon>
+          <span class="p-message-summary">{{'General.Warning' | translate}}</span>
+          <span class="p-message-detail">{{'CompareProducts.WarningAtleastTwoProducts' | translate}}</span>
+        </div>
+      </div>
+    </mat-menu>
+ 
+
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon matBadge="7" matBadgeColor="warn" matBadgeSize="small">shopping_cart</mat-icon>
     </button>
@@ -35,7 +68,6 @@
     <mat-menu #compareMenu="matMenu">
 
       <div class="actionTitle">{{'CompareProducts.Title' | translate}}</div>
-
       <!-- ng Repeat for Items to compare -->
       <ng-container *ngFor="let product of compareProductList">
         <div class="product">

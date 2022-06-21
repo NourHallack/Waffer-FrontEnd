@@ -1,0 +1,15 @@
+<h2 mat-dialog-title class="rules">Add New Product</h2>
+
+<mat-dialog-content class="mat-typography">
+    
+    <form [formGroup]="addNewProductForm">
+
+       
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>{{'General.Cancel' | translate}}</button>
+    <button mat-button mat-raised-button (click)="addNewProduct()">Add Product</button>
+</mat-dialog-actions>

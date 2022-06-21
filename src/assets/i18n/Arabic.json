@@ -5,8 +5,12 @@
     }, 
     "Menu" : {"CustomizedPackage" : "صمم حزمتك الخاصة" , 
               "Maintenance" : "الصيانة" , 
+              "MaintenanceTitle" : " قسم الصيانة",
               "BestPackagePrice" : "التصنيفات ",
               "Login" : "تسجيل الدخول",
               "RegisterNewSeller" : "تسجيل بائع جديد"
+    },
+    "Search" : { 
+        "SearchAProduct" : " البحث عن منتج"
     }
 }

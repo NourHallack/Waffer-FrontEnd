@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
+import { AddNewProductDialogComponent } from '../add-new-product-dialog/add-new-product-dialog.component';
 import { CustomizePackageDialogComponent } from '../customize-package-dialog/customize-package-dialog.component';
 import { LoginSignInComponent } from '../login-sign-in/login-sign-in.component';
 import { NewSellerDialogComponent } from '../new-seller-dialog/new-seller-dialog.component';
@@ -21,7 +22,6 @@ export class HeaderNavBarComponent implements OnInit {
   compareProductListLength : String = "";
 
   compareProductList : any = [];
-  
 
   constructor(private http: HttpClient ,
               private dialog : MatDialog,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 /** TO Do
@@ -18,59 +19,41 @@ import {MatDialogRef} from '@angular/material/dialog';
 export class LoginSignInComponent implements OnInit {
 
   SignInForm !: FormGroup ;
-  SignUpForm!: FormGroup ;
-
-  reEnterPassword = new FormControl('', [Validators.required]);
-
-  reEnterPasswordCheck:boolean = false ;
-
+  user : any = "" ;
 
   constructor(private formBuilder: FormBuilder,
               private api : ApiService,
-              private dialogRef : MatDialogRef<LoginSignInComponent>) { }
+              private dialogRef : MatDialogRef<LoginSignInComponent>,
+              public router: Router) { }
 
   ngOnInit(): void {
 
     this.SignInForm = this.formBuilder.group({
-      userEmail : ['' , Validators.required],
-      userPassword : ['' , Validators.required]      
+      email : ['' , Validators.required],
+      password : ['' , Validators.required]      
     });
 
-    this.SignUpForm = this.formBuilder.group({
-      userName : ['' , Validators.required],
-      userEmail : ['' , Validators.required],
-      userPassword : ['' , Validators.required]      
-    });
-  }
-
-
-  // SignUp Button
-  signUp(){
-
-    //check if password equals the Re entered Password
    
-    
-
-
   }
-
-  //check if password equals the Re entered Password
-  getReEnterPasswordCheck(){
-    if(this.SignUpForm.value.userPassword != this.reEnterPassword.value){
-      return 'The Re-Entered password is different' ;
-    }
-   
-    return '' ;
-  }
-
-
-
 
   // SignIn Button
   signIn(){
+    this.api.login(this.SignInForm.value).subscribe( res => {
+
+      if ( res.roles == "Admin"){
+        this.router.navigate(['admin']);
+      }else if (res.roles == "Seller"){
+        this.router.navigate(['seller']);
+      }else {
+        this.router.navigate(['']);
+      }
+
+    }  );
+
+    this.dialogRef.close();
+
+    
 
   } 
-
-  // Remember Me Checkbox
 
 }

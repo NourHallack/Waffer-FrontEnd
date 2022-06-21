@@ -28,6 +28,10 @@ export class ApiService {
     return this.http.post(this.baseURL+"api/sellers" , data );
   }
 
+  login(data :any){
+    return this.http.post<any>(this.baseURL + "api/Auth/login" , data);
+  }
+
   getRegisterNewSeller(data : any){   // Admin Side 
     return this.http.get<any>("http://localhost:3000/sellerRegisterRequest/");
   }
@@ -49,13 +53,44 @@ export class ApiService {
     return this.http.get<any>(this.baseURL +`api/subcategories/get-features/${subCategoryId}`);
   }
 
-  getCompareList(){
-    return this.http.get<any>("http://localhost:3000/compareProductList");
-  }
-
   getMaintenanceList(){
     return this.http.get<any>("http://localhost:3000/maintenanceList");
   }
+
+  getCategoryList(){
+    return this.http.get<any>(this.baseURL + "api/categories");
+  }
+
+  //Admin Portal 
+
+  getNewSellerPendingRequests(){
+    return this.http.get<any>(this.baseURL + "api/sellers/pending-sellers");
+  }
+
+  acceptNewSeller(id : any ){
+    return this.http.post<any>(this.baseURL +"api/sellers/verify-seller" , id);
+  }
+
+  declineNewSeller(id : any ){
+    return this.http.post<any>(this.baseURL +"api/sellers/reject-seller" , id);
+  }
+
+  getProductPendingRequests(){
+    return this.http.get<any>(this.baseURL + "api/items/pending");
+  }
+
+  acceptNewProduct(id:any){
+    return this.http.post<any>(this.baseURL +`api/items/approve/${id}` , id);
+  }
+
+  declineNewProduct(id:any){
+    return this.http.post<any>(this.baseURL +`/api/items/reject/${id}` , id);
+  }
+
+  
+
+  
+
 
   
 

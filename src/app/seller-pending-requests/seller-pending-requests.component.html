@@ -1,0 +1,17 @@
+<div class="actionTitle">Pending Product</div>
+<ng-container *ngFor="let request of pendingSellerList">
+    <div class="product">
+        <div class="productDescription">
+            <div class="test2">
+                <p style="flex-grow: 1;">{{request.name}}</p>
+                <div>
+                    <mat-icon (click)="acceptSeller(request.id)" style="color: green;">done</mat-icon>
+                    <mat-icon (click)="declineSeller(request.id)"style="color: red; ">clear</mat-icon>
+                </div>
+            </div>
+            <a>{{request.description}}</a>
+            <br>
+            <a>{{request.price}}</a>
+        </div>
+    </div>
+</ng-container>
