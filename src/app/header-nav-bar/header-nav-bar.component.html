@@ -16,42 +16,44 @@
       <mat-icon>engineering</mat-icon> {{'Menu.Maintenance' | translate}}
     </a>
 
-    <a mat-button>
-      <mat-icon>devices</mat-icon> {{'Menu.BestPackagePrice' | translate}}
-    </a>
+    <a mat-button [matMenuTriggerFor]="Categories"><mat-icon>devices</mat-icon> {{'Menu.BestPackagePrice' | translate}}</a>
+    <mat-menu #Categories="matMenu">
+      <button [matMenuTriggerFor]="subcategory" mat-menu-item  (click)="getSubCategory(category.id)"  *ngFor="let category of categoryList">{{category.name}}</button>
+    </mat-menu>
+
+    <mat-menu #subcategory = "matMenu">
+      <button *ngFor="let subCategory of subCategoryList" mat-menu-item>{{subCategory.name}}</button>
+    </mat-menu>
 
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="favoriteMenu" aria-label="Example icon-button with heart icon">
-      <mat-icon matBadge="10" matBadgeColor="warn" matBadgeSize="small">favorite</mat-icon>
+    <button (click)="getFavoriteList()" mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="favoriteMenu" aria-label="Example icon-button with heart icon">
+      <mat-icon matBadge={{favoriteProductList.length}} matBadgeColor="warn" matBadgeSize="small">favorite</mat-icon>
     </button>
     <mat-menu #favoriteMenu="matMenu">
 
-      <div class="actionTitle">{{'CompareProducts.Title' | translate}}</div>
+      <div class="actionTitle">Favorite List</div>
       <!-- ng Repeat for Items to compare -->
-      <ng-container *ngFor="let product of compareProductList">
+      <ng-container *ngFor="let product of favoriteProductList">
         <div class="product">
           <div><a class="test"><img class="productImage" src={{product.photoLink}}></a></div>
           <div class="productDescription">
             <div class="test2">
               <p style="flex-grow: 1;">{{product.name}}</p>
-              <div (click)="deleteProductFromCompareList(product.id)">
+              <div (click)="deleteProductFromFavoriteList(product.id)">
                 <mat-icon style="color: var(--primary-color);">delete</mat-icon>
               </div>
             </div>
             <a>{{product.description}}</a>
+            <br>
+            <a style="color: red; font-weight: bold;">₪{{product.price}}</a>
           </div>
         </div>
       </ng-container>
-      <!-- ng-If we have more than 2 products to compare -->
-      <button *ngIf=" compareProductList.length > 1" mat-button class="actionButton" routerLink="comparePage">{{'CompareProducts.GoToComparePageButton' |
-        translate}}</button>
-
-      <!-- <-- Choose At least two products to compare -->
-      <div role="alert" class="p-message p-message-warn" *ngIf="compareProductList.length < 2">
+      <div role="alert" class="p-message p-message-warn" *ngIf="favoriteProductList.length < 2">
         <div class="p-message-wrapper">
           <mat-icon class="p-message-icon">report_problem</mat-icon>
           <span class="p-message-summary">{{'General.Warning' | translate}}</span>
-          <span class="p-message-detail">{{'CompareProducts.WarningAtleastTwoProducts' | translate}}</span>
+          <span class="p-message-detail">No Products in favorite list</span>
         </div>
       </div>
     </mat-menu>
@@ -80,6 +82,8 @@
               </div>
             </div>
             <a>{{product.description}}</a>
+            <br>
+            <a style="color: red; font-weight: bold;">₪{{product.price}}</a>
           </div>
         </div>
       </ng-container>

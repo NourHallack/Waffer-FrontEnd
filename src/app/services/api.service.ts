@@ -61,6 +61,10 @@ export class ApiService {
     return this.http.get<any>(this.baseURL + "api/categories");
   }
 
+  getSubCategoryById(categoryId : any){
+    return this.http.get<any>(this.baseURL +`api/subcategories/${categoryId}`);
+  }
+
   //Admin Portal 
 
   getNewSellerPendingRequests(){

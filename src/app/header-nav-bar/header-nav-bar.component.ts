@@ -22,6 +22,10 @@ export class HeaderNavBarComponent implements OnInit {
   compareProductListLength : String = "";
 
   compareProductList : any = [];
+  favoriteProductList : any = [];
+
+  public categoryList : any ;
+  public subCategoryList : any ;
 
   constructor(private http: HttpClient ,
               private dialog : MatDialog,
@@ -29,9 +33,14 @@ export class HeaderNavBarComponent implements OnInit {
               private cookie: CookieService ) { 
 
     this.selectedLanguage = localStorage.getItem('lang') || "English";
+
     this.getCompareList ();
+    this.getFavoriteList();
+
     this.compareProductListLength = this.cookie.get('compareProductIdList').includes("/") ? "2" : 
                                     this.cookie.get('compareProductIdList') != "" ? "1" : "" ;
+
+    this.api.getCategoryList().subscribe( res =>  this.categoryList = res  );
   }
 
   ngOnInit(): void { 
@@ -105,10 +114,44 @@ export class HeaderNavBarComponent implements OnInit {
     
   }
 
+  getFavoriteList(){
 
-  
+     //Get the Id of Compare prodcut list from cookies
+     var cookiesFavoriteProductIdList : string = this.cookie.get('favoriteProductIdList');
+     if(cookiesFavoriteProductIdList == ""){
+       return;
+     }
+     let FavoriteProductIdList = cookiesFavoriteProductIdList.split("/");
+ 
+     //Get from Api Product of the Ids and add them to Compare product list 
+     this.favoriteProductList = [];
+     for (let i = 0; i < FavoriteProductIdList.length; i++) {
+       this.api.getProductById(FavoriteProductIdList[i]).subscribe( res =>  
+       this.favoriteProductList.push(res));
+       
+     }
+
+  }
+
+  deleteProductFromFavoriteList(id : any ){
+
+     var cookiesFavoriteProductIdList : string = this.cookie.get('favoriteProductIdList');
+     let FavoriteProductIdList = cookiesFavoriteProductIdList.replace("/"+id, "").replace(id, "");
+
+     if (FavoriteProductIdList != ""){
+      this.cookie.delete('favoriteProductIdList');
+     }
+
+     this.cookie.set('favoriteProductIdList', FavoriteProductIdList );
+     this.getFavoriteList();
 
 
+  }
+
+  getSubCategory(categoryId : any ){
+    this.api.getSubCategoryById(categoryId).subscribe( res =>  { console.log(res);  this.subCategoryList = res; } );
+
+  }
 
  
 

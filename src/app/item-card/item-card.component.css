@@ -96,6 +96,12 @@
    margin: auto;
 }
 
+.compareMsg{
+    color : black;
+    font-size:medium;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: bold;
+}
 
 
 

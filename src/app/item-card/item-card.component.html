@@ -1,5 +1,5 @@
 <div class=" container card">
-    <div class="productTitle row " >
+    <div class="productTitle row ">
         <img class="productManufacture col-md-3" src={{getBrandImage(product.brand)}}>
         <div class="col-md-6"></div>
         <img class="productSeller col-md-3  right" src="../../assets/imgs/sbitany_logo.png">
@@ -9,23 +9,28 @@
     <div class="productImage">
         <img src="{{product.photoLink}}">
     </div>
-    
+
     <div class="productDescription">
         <p>{{product.description}}</p>
         <p>{{product.color}}</p>
     </div>
 
     <div class="price row">
-        <span *ngIf=" product.saleRatio != 0" class="newPrice col-5">₪{{getNewPrice(product.price , product.saleRatio)}}</span>
+        <span *ngIf=" product.saleRatio != 0" class="newPrice col-5">₪{{getNewPrice(product.price ,
+            product.saleRatio)}}</span>
         <span *ngIf=" product.saleRatio != 0" class="oldPrice col-5">₪{{product.price}}</span>
         <span *ngIf=" product.saleRatio == 0" class="newPrice col-5">₪{{product.price}}</span>
     </div>
 
     <div class="productAction">
-        
-        <mat-icon>favorite</mat-icon> 
+
+        <mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon>
         <mat-icon>shopping_cart</mat-icon>
-        <mat-icon (click)="addProductToCompareList()">compare</mat-icon>
+
+        <mat-icon (click)="addProductToCompareList()" [matMenuTriggerFor]="compareMsg">compare</mat-icon>
+        <mat-menu #compareMsg="matMenu">
+            <span class="compareMsg">{{getCompareMsg()}}</span>
+        </mat-menu>
     </div>
 
 

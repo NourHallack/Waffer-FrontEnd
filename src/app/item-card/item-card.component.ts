@@ -13,20 +13,40 @@ export class ItemCardComponent implements OnInit {
   @Input() product: any;
 
   public compareProductList: any;
+  public compareMsg : String = "" ;
+  public favoriteMsg : String = "" ;
 
   constructor(private cookie: CookieService,
               private header : HeaderNavBarComponent) { }
 
   ngOnInit(): void {
   }
-
-  // Handle Manufacture Image 
-
-  // Handle Seller Image 
+ 
 
   //Reserve Button
 
   //Favorite Button
+  addProductToFavoriteList(){
+
+    var cookiesFavoriteProductIdList : string = " " ;
+    cookiesFavoriteProductIdList =  this.cookie.get('favoriteProductIdList');
+
+    //Already Exist return Exist
+    if(cookiesFavoriteProductIdList.includes(this.product.id)){
+      this.favoriteMsg = "This Product is already added to Favorite List" ;
+      return ;
+    }
+
+    if (cookiesFavoriteProductIdList != ""){  
+      cookiesFavoriteProductIdList =  cookiesFavoriteProductIdList + "/" +  (this.product.id);
+      this.cookie.set('favoriteProductIdList', cookiesFavoriteProductIdList);
+    }
+    else {
+      cookiesFavoriteProductIdList = (this.product.id);
+      this.cookie.set('favoriteProductIdList', cookiesFavoriteProductIdList);
+    }
+
+  }
 
   //Compare Button
   
@@ -35,15 +55,25 @@ export class ItemCardComponent implements OnInit {
     var cookiesCompareProductIdList : string = " " ;
     cookiesCompareProductIdList =  this.cookie.get('compareProductIdList');
 
-    //Cannot Add more than 3 product (x/x) 
-    if(cookiesCompareProductIdList.includes("/")){
+    //Already Exist return Exist
+    if(cookiesCompareProductIdList.includes(this.product.id)){
+      this.compareMsg = "This Product is already added" ;
       return ;
     }
 
-    //Already Exist return Exist
-    if(cookiesCompareProductIdList.includes(this.product.id)){
+    //Cannot Add more than 3 product (x/x) 
+    if(cookiesCompareProductIdList.includes("/")){
+      this.compareMsg = "You can compare up to 2 products Only";
       return ;
     }
+
+    //Add Same type only 
+    if (this.cookie.check('subCategoryId') && this.cookie.get('subCategoryId') != this.product.subCategoryId){
+      this.compareMsg = "You can compare of the same type Only";
+      return ;
+    }
+
+    
 
     if (cookiesCompareProductIdList != ""){  
       this.header.compareProductListLength = "2";
@@ -54,6 +84,8 @@ export class ItemCardComponent implements OnInit {
       this.cookie.set('compareProductIdList', cookiesCompareProductIdList);
       this.cookie.set('subCategoryId', this.product.subCategoryId);
     }
+
+    this.compareMsg = "Your product was added successfully";
   
   }
 
@@ -61,12 +93,16 @@ export class ItemCardComponent implements OnInit {
   /// 1 -  new Price = (oldPrice - ratio* oldPrice)
   getNewPrice(price:any , saleRatio : any ){
 
-    return (price - (saleRatio * price)/100);
+    return Math.round(price - (saleRatio * price)/100);
 
   }
   //  2-  product Manufacture 
   getBrandImage(brand : any ){
      return "../../assets/imgs/brand/"+ brand+".png" ;
+  }
+
+  getCompareMsg(){
+    return this.compareMsg;
   }
 
 }

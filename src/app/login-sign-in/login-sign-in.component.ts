@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 /** TO Do
@@ -24,7 +25,8 @@ export class LoginSignInComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private api : ApiService,
               private dialogRef : MatDialogRef<LoginSignInComponent>,
-              public router: Router) { }
+              public router: Router,
+              private cookie: CookieService) { }
 
   ngOnInit(): void {
 
@@ -42,11 +44,13 @@ export class LoginSignInComponent implements OnInit {
 
       if ( res.roles == "Admin"){
         this.router.navigate(['admin']);
-      }else if (res.roles == "Seller"){
+      }else if (res.roles == "User"){
         this.router.navigate(['seller']);
       }else {
         this.router.navigate(['']);
       }
+
+      this.cookie.set('jwt', res.token) ;
 
     }  );
 

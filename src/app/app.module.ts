@@ -20,6 +20,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -93,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatAutocompleteModule,
     MatMenuModule,
     MatSliderModule,
+    MatProgressSpinnerModule,
     MatButtonToggleModule,
     TranslateModule.forRoot({
       loader: {
