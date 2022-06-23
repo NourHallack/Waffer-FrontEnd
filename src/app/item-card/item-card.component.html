@@ -1,21 +1,21 @@
 <div class=" container card">
-    <div class="productTitle row ">
+    <div class="productTitle row " (click)="openFullView()">
         <img class="productManufacture col-md-3" src={{getBrandImage(product.brand)}}>
         <div class="col-md-6"></div>
         <img class="productSeller col-md-3  right" src="../../assets/imgs/sbitany_logo.png">
         <h5 class="">{{product.name}}</h5>
     </div>
 
-    <div class="productImage">
+    <div class="productImage" (click)="openFullView()">
         <img src="{{product.photoLink}}">
     </div>
 
-    <div class="productDescription">
+    <div class="productDescription"(click)="openFullView()">
         <p>{{product.description}}</p>
         <p>{{product.color}}</p>
     </div>
 
-    <div class="price row">
+    <div class="price row" (click)="openFullView()">
         <span *ngIf=" product.saleRatio != 0" class="newPrice col-5">₪{{getNewPrice(product.price ,
             product.saleRatio)}}</span>
         <span *ngIf=" product.saleRatio != 0" class="oldPrice col-5">₪{{product.price}}</span>

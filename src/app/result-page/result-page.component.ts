@@ -20,5 +20,9 @@ export class ResultPageComponent implements OnInit {
     .subscribe( res =>  { this.productList = res ; } );
   }
 
+  getProducts(productsList : any ){
+    this.productList = productsList ;
+  }
+
 
 }

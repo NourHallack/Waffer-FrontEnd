@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderNavBarComponent } from '../header-nav-bar/header-nav-bar.component';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FullViewProductComponent } from '../full-view-product/full-view-product.component';
+
 
 @Component({
   selector: 'app-item-card',
@@ -17,6 +19,7 @@ export class ItemCardComponent implements OnInit {
   public favoriteMsg : String = "" ;
 
   constructor(private cookie: CookieService,
+              private dialog : MatDialog,
               private header : HeaderNavBarComponent) { }
 
   ngOnInit(): void {
@@ -103,6 +106,16 @@ export class ItemCardComponent implements OnInit {
 
   getCompareMsg(){
     return this.compareMsg;
+  }
+
+  openFullView(){
+    this.dialog.open(FullViewProductComponent, {
+      width : '40%',
+      data: {
+        product:  this.product
+      }
+    });
+
   }
 
 }

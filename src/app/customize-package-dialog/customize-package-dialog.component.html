@@ -35,13 +35,26 @@
                 </mat-slider>
             </li>
 
+            <!-- Brand -->
+            <li>
+                <p>Please select the brand that you prefer</p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Preffered Brand</mat-label>
+                    <mat-select  formControlName="brand">
+                        <mat-option *ngFor="let brand of brandList" [value]="brand">{{brand}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-icon matSuffix>factory</mat-icon>
+                </mat-form-field>
+            </li>
+
             <!-- Devices  -->
             <li>
                 <p>{{'CustomizePackage.Dialog.DevicesIntroduction' | translate}}</p>
                 <mat-form-field appearance="outline">
                     <mat-label>{{'CustomizePackage.Dialog.RequiredAppliances' | translate}}</mat-label>
                     <mat-select multiple formControlName="requiredApplicances">
-                        <mat-option *ngFor="let appliance of applianceList" [value]="appliance">{{appliance}}
+                        <mat-option *ngFor="let appliance of applianceList" [value]="appliance.guid">{{appliance.display}}
                         </mat-option>
                     </mat-select>
                     <mat-icon matSuffix>blender</mat-icon>
@@ -70,3 +83,5 @@
     <button mat-button mat-raised-button (click)="generatePackage()">{{'CustomizePackage.Dialog.GeneratePackageButton' |
         translate}}</button>
 </mat-dialog-actions>
+
+<!-- <mat-spinner></mat-spinner> -->

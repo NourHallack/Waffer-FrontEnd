@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { AddNewProductDialogComponent } from '../add-new-product-dialog/add-new-product-dialog.component';
@@ -16,6 +16,8 @@ import { ApiService } from '../services/api.service';
 })
 export class HeaderNavBarComponent implements OnInit {
 
+  @Output() selectedPlanEvent = new EventEmitter<string>();
+
   languages: string[] = ['Arabic','English'];
   selectedLanguage : String ;
 
@@ -27,8 +29,7 @@ export class HeaderNavBarComponent implements OnInit {
   public categoryList : any ;
   public subCategoryList : any ;
 
-  constructor(private http: HttpClient ,
-              private dialog : MatDialog,
+  constructor(private dialog : MatDialog,
               private api : ApiService,
               private cookie: CookieService ) { 
 
@@ -101,6 +102,7 @@ export class HeaderNavBarComponent implements OnInit {
 
     if(CompareProductIdList.length == 1 ){
       this.cookie.delete('compareProductIdList');
+      this.cookie.delete('subCategoryId');
       this.compareProductListLength = "" ;
       this.compareProductList = [];
 
@@ -150,7 +152,11 @@ export class HeaderNavBarComponent implements OnInit {
 
   getSubCategory(categoryId : any ){
     this.api.getSubCategoryById(categoryId).subscribe( res =>  { console.log(res);  this.subCategoryList = res; } );
+    return this.subCategoryList ;
+  }
 
+  getProductBySubCategoryId (subCategoryId : any ){
+    return this.api.getProductsBySubCategoryId(subCategoryId).subscribe( res => this.selectedPlanEvent.emit(res));
   }
 
  

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -62,8 +62,23 @@ export class ApiService {
   }
 
   getSubCategoryById(categoryId : any){
-    return this.http.get<any>(this.baseURL +`api/subcategories/${categoryId}`);
+    return this.http.get<any>(this.baseURL +`category-id/${categoryId}`);
   }
+
+  getProductsBySubCategoryId (subCategoryId : any){
+    return this.http.get<any>(this.baseURL +`api/items/subcategory/${subCategoryId}`);
+  }
+
+  //Search
+  doSearch(searchFor : string , sortBy : string ){   // Client Side 
+    let params: HttpParams = new HttpParams();
+    params.set('searchFor', searchFor );
+    params.set('sortBy', sortBy);
+    let options = {params : params };
+
+    return this.http.get<any>(this.baseURL +`api/items?searchFor=${searchFor}&sortBy=${sortBy}` );
+
+  } 
 
   //Admin Portal 
 

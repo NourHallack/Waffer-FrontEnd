@@ -1,15 +1,31 @@
 <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="outline">
-            <span matPrefix> </span>
-            <input class="searchBarInput" matInput placeholder="{{'Search.SearchAProduct' | translate}}"
-             name="search"  [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                  {{option}}
-                </mat-option>
-              </mat-autocomplete>
-            <button matSuffix mat-button (click)="search()">
-                <mat-icon>search</mat-icon>
-            </button>
-        </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <span matPrefix> </span>
+    <input class="searchBarInput" matInput placeholder="{{'Search.SearchAProduct' | translate}}" name="search"
+      [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+    <button matSuffix mat-button (click)="search()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button matSuffix mat-button [matMenuTriggerFor]="menu" (click)="search()">
+      <mat-icon>filter_alt</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button (click)="changeSortType(option.value)" *ngFor="let option of sortByOptions" mat-menu-item>
+        <mat-icon>{{option.icon}}</mat-icon>
+        <span>{{option.display}}</span>
+      </button>
+    </mat-menu>
+    <button *ngIf="order=='acs'" matSuffix mat-button (click)="changeSortOrder()">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+    <button *ngIf="order=='desc'" matSuffix mat-button (click)="changeSortOrder()">
+      <mat-icon>arrow_downward</mat-icon>
+    </button>
+  </mat-form-field>
+
 </form>

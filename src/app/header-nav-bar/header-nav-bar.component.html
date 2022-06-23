@@ -18,11 +18,11 @@
 
     <a mat-button [matMenuTriggerFor]="Categories"><mat-icon>devices</mat-icon> {{'Menu.BestPackagePrice' | translate}}</a>
     <mat-menu #Categories="matMenu">
-      <button [matMenuTriggerFor]="subcategory" mat-menu-item  (click)="getSubCategory(category.id)"  *ngFor="let category of categoryList">{{category.name}}</button>
+      <button [matMenuTriggerFor]="subcategory" mat-menu-item on-mouseover="getSubCategory(category.id)" (click)="getSubCategory(category.id)"  *ngFor="let category of categoryList">{{category.name}}</button>
     </mat-menu>
 
     <mat-menu #subcategory = "matMenu">
-      <button *ngFor="let subCategory of subCategoryList" mat-menu-item>{{subCategory.name}}</button>
+      <button (click)="getProductBySubCategoryId(subCategory.id)" *ngFor="let subCategory of subCategoryList" mat-menu-item>{{subCategory.name}}</button>
     </mat-menu>
 
     <span class="example-spacer"></span>

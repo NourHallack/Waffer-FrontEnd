@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ResultPageComponent } from '../result-page/result-page.component';
 
 @Component({
   selector: 'app-waffer',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WafferComponent implements OnInit {
 
+  @ViewChild('productOfSubCategoryList')
+  resultComponent!: ResultPageComponent;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  getSubCategoryProducts(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
+
+  searchProduct(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
+
+
 
 }
