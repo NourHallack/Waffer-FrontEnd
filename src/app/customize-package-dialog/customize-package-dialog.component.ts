@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customize-package-dialog',
@@ -25,24 +26,24 @@ export class CustomizePackageDialogComponent implements OnInit {
                           {display : "Washer" , guid : "3433f09b-e255-46ae-3902-08da50794a19"},
                           {display : "Hairdryer" , guid : "46220106-b790-4ec2-3900-08da50794a19"}
                           ]; 
-  brandList : String[] = ["BISSELL" , "DYSON" , "DREAME" , "LG" , "PHILIPS" , "MIDEA" ,"MONSTER",
+  brandList : String[] = ["Any","BISSELL" , "DYSON" , "DREAME" , "LG" , "PHILIPS" , "MIDEA" ,"MONSTER",
                           "FG" , "BEKO" , "TCL","GINA" , "MAGIC" , "REMINGTON"];
   
 
 
   constructor( private formBuilder: FormBuilder,
                private api : ApiService,
-               private dialogRef : MatDialogRef<CustomizePackageDialogComponent>) { }
+               private dialogRef : MatDialogRef<CustomizePackageDialogComponent>,
+               public router : Router) { }
 
   ngOnInit(): void {
 
     this.customizedPackageForm = this.formBuilder.group({
       houseSpace : ['' , Validators.required],
-      noOfFamilyMember : [1 , Validators.required],
+      familyMembers : [1 , Validators.required],
       brand : ['', ],
       budget : [ 5000 , Validators.required],
-      requiredApplicances  : ['' , Validators.required],
-      powerConsumption : ['' , '']
+      requiredItems  : ['' , Validators.required]
     })
   }
 
@@ -67,13 +68,17 @@ export class CustomizePackageDialogComponent implements OnInit {
     // Loader 
 
     this.customizedPackageForm.value.houseSpace = Number(this.customizedPackageForm.value.houseSpace);
+    this.customizedPackageForm.value.budget = Number(this.customizedPackageForm.value.budget);
+    this.customizedPackageForm.value.familyMembers = Number(this.customizedPackageForm.value.familyMembers);
+
     console.log(this.customizedPackageForm.value);
 
-    //Post API 
+    //Post API   // display result 
+    this.api.customizeMyPackage(this.customizedPackageForm.value).subscribe(res=>   this.router.navigate(['customizePackagePage'], {state: {data : res}}));
 
-    
-
-    // display result 
+  
+    //close Dialog
+    this.dialogRef.close();
 
   }
 

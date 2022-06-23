@@ -110,7 +110,8 @@ export class ItemCardComponent implements OnInit {
 
   openFullView(){
     this.dialog.open(FullViewProductComponent, {
-      width : '40%',
+      width : '800px',
+      height: '500px',
       data: {
         product:  this.product
       }

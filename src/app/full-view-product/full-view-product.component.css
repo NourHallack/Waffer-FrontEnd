@@ -1,0 +1,37 @@
+.productImage {
+    width: auto;
+    height: auto;
+    position: unset;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.Image{
+    width: 300px;
+    height: 300px;
+    display: block;
+    position: unset;
+    text-align: center;
+}
+
+.productDescription{
+    flex-grow: 1;
+    padding-left: 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: medium;
+    width: 400px;
+}
+.description{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.product{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    align-items: flex-start;
+    padding-top: 10px;
+}

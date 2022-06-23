@@ -80,6 +80,12 @@ export class ApiService {
 
   } 
 
+  //CustomizePackage 
+  customizeMyPackage(data : any){
+    return this.http.post<any>(this.baseURL +"api/items/customized-package", data );
+
+  }
+
   //Admin Portal 
 
   getNewSellerPendingRequests(){

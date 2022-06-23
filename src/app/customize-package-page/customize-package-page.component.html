@@ -1,0 +1,17 @@
+<div class="comparePage">
+    <h1 class="title">
+        <mat-icon style="color: var(--primary-color);">engineering</mat-icon>My Customized Package
+    </h1>
+    <div class="maintenance card" *ngFor="let product of productList">
+        <div><a class="test"><img class="maintenanceImage" src={{product.photoLink}}></a></div>
+        <div class="productDescription">
+            <div class="test2">
+                <p style="flex-grow: 1;">{{product.name}} - {{product.brand}}</p>
+            </div>
+            <p> {{product.description}}</p>
+            <p> {{product.color}}</p>
+            <p> {{product.price}}</p>
+
+        </div>
+    </div>
+</div>
