@@ -1,37 +1,40 @@
-<div class=" container card">
-    <div class="productTitle row " (click)="openFullView()">
-        <img class="productManufacture col-md-3" src={{getBrandImage(product.brand)}}>
-        <div class="col-md-6"></div>
-        <img class="productSeller col-md-3  right" src="../../assets/imgs/sbitany_logo.png">
-        <h5 class="">{{product.name}}</h5>
+<div class="container_card">
+<div class="cardContent" (click)="openFullView()">
+  <div class="cardHeader">
+    <img class="Logo-img" src={{getBrandImage(product.brand)}}>
+    <img class="Logo-img" src="../../assets/imgs/sbitany_logo.png">
+  </div>
+
+  <hr id="line">
+
+  <div class="cardBody">
+    <div>
+      <img src="{{product.photoLink}}">
     </div>
 
-    <div class="productImage" (click)="openFullView()">
-        <img src="{{product.photoLink}}">
+
+    <p>{{product.description}}</p>
+
+  </div>
+
+  <div class="cardFooter">
+
+    <div class="Actions">
+      <div id="AddToFavorite"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
+      <div id="AddToCompare">  <mat-icon (click)="addProductToCompareList()" [matMenuTriggerFor]="compareMsg">compare</mat-icon></div>
+      <mat-menu #compareMsg="matMenu">
+        <span class="compareMsg">{{getCompareMsg()}}</span>
+      </mat-menu>
+
     </div>
-
-    <div class="productDescription"(click)="openFullView()">
-        <p>{{product.description}}</p>
-        <p>{{product.color}}</p>
+    <div class="price">
+      <span *ngIf=" product.saleRatio != 0" class="oldPrice">₪{{product.price}}</span>
+      <span *ngIf=" product.saleRatio != 0"  class="newPrice">₪{{getNewPrice(product.price ,
+        product.saleRatio)}}</span>
+      <span *ngIf=" product.saleRatio == 0" >₪{{product.price}}</span>
     </div>
+  </div>
 
-    <div class="price row" (click)="openFullView()">
-        <span *ngIf=" product.saleRatio != 0" class="newPrice col-5">₪{{getNewPrice(product.price ,
-            product.saleRatio)}}</span>
-        <span *ngIf=" product.saleRatio != 0" class="oldPrice col-5">₪{{product.price}}</span>
-        <span *ngIf=" product.saleRatio == 0" class="newPrice col-5">₪{{product.price}}</span>
-    </div>
-
-    <div class="productAction">
-
-        <mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon>
-        <mat-icon>shopping_cart</mat-icon>
-
-        <mat-icon (click)="addProductToCompareList()" [matMenuTriggerFor]="compareMsg">compare</mat-icon>
-        <mat-menu #compareMsg="matMenu">
-            <span class="compareMsg">{{getCompareMsg()}}</span>
-        </mat-menu>
-    </div>
-
+</div>
 
 </div>

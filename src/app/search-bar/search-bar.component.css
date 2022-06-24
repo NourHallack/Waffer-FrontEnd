@@ -3,43 +3,35 @@
     max-width: 700px;
     width: 100%;
     margin: auto;
+    background:#ffffff;
+    margin-top:22px;
 }
 
 .example-full-width {
     width: 100%;
     border-radius: 3px;
+  background:#ffffff;
+
 }
 
-.searchBarInput{  
-    font-size:x-large;
+.searchBarInput{
+    font-size:20px;
     font-family: 'Tajawal', sans-serif;
-    color: var(--primary-color); 
-    height: 20px;
-}
 
-::placeholder { 
-    color: gray; 
 }
 
 
 .mat-icon{
     color: var(--primary-color);
-    transform: scale(2);
-   
-}
+    transform: scale(1.5);
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-    color:  var(--primary-color) !important;
-    opacity: 1!important;
-    background-color: white;
 }
 
 
 
 
-  
-  
 
-  
 
-  
+
+
+
