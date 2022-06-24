@@ -1,4 +1,10 @@
 .Basic{
-    background-color: #c8d8e4;
-    font-family: 'Tajawal', sans-serif; 
+    font-family: 'Tajawal', sans-serif;
 }
+
+.navSearch{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
