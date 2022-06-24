@@ -21,4 +21,22 @@ export class CustomizePackagePageComponent implements OnInit {
     console.log(this.productList);
   }
 
+  getNewPrice(price: any, saleRatio: any) {
+
+    return Math.round(price - (saleRatio * price) / 100);
+
+  }
+
+  //Calculate Total Package Price 
+  calculateTotalPackagePrice() {
+    let sum = 0;
+
+    this.productList.forEach((element: any) => {
+      sum += this.getNewPrice(element.price, element.saleRatio)
+    });
+
+    return sum ;
+
+  }
+
 }

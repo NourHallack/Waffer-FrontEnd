@@ -7,11 +7,16 @@
         <div class="productDescription">
             <div class="test2">
                 <p style="flex-grow: 1;">{{product.name}} - {{product.brand}}</p>
+                <div>
+                    <mat-icon style="color: var(--primary-color);">favorite</mat-icon>
+                    <mat-icon style="color: var(--primary-color);">shopping_cart</mat-icon>
+                    <mat-icon style="color: var(--primary-color);">compare</mat-icon>
+                </div>
             </div>
             <p> {{product.description}}</p>
             <p> {{product.color}}</p>
-            <p> {{product.price}}</p>
-
+            <p> Before the Sale : ₪{{product.price}} - After the Sale: ₪{{getNewPrice(product.price, product.saleRatio)}}</p>
         </div>
     </div>
+    <div class="totalPrice">Total Package Price:  ₪{{calculateTotalPackagePrice()}}</div>
 </div>

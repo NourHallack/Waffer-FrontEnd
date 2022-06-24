@@ -27,6 +27,14 @@ export class AddNewProductDialogComponent implements OnInit {
     
   }
 
+  selectCategory(CategoryId : any){
+    this.api.getSubCategoryById(CategoryId).subscribe(res => this.subCategoryList = res);
+  }
+
+  selectSubCategory(subCategoryId :any){
+    this.api.getFeatureBySubCategoryId(subCategoryId).subscribe(res => console.log(res));
+  }
+
   
   
   addNewProduct(){

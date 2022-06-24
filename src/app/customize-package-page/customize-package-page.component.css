@@ -20,7 +20,7 @@
     width: 700px ;
     height: 180px ;
     border-radius: 6px;
-    border-width: medium;
+    border-width: 2px;
     border-color: var(--primary-color);
     padding-left: 40px;
 
@@ -67,4 +67,10 @@
     display: flex;
     align-items: center;
     font-weight: bold;
+}
+
+.totalPrice{
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--primary-color);
 }
