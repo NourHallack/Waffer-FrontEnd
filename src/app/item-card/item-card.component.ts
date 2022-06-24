@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderNavBarComponent } from '../header-nav-bar/header-nav-bar.component';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FullViewProductComponent } from '../full-view-product/full-view-product.component';
+import { SellerFullViewComponent } from '../seller-full-view/seller-full-view.component';
+import { ApiService } from '../services/api.service';
 
 
 @Component({
@@ -14,34 +16,41 @@ export class ItemCardComponent implements OnInit {
 
   @Input() product: any;
 
+  public seller : any ;
+
   public compareProductList: any;
-  public compareMsg : String = "" ;
-  public favoriteMsg : String = "" ;
+  public compareMsg: String = "";
+  public favoriteMsg: String = "";
 
   constructor(private cookie: CookieService,
-              private dialog : MatDialog,
-              private header : HeaderNavBarComponent) { }
+    private dialog: MatDialog,
+    private header: HeaderNavBarComponent,
+    private api : ApiService) {
+      
+     }
 
   ngOnInit(): void {
+    this.api.getSellerDetails(this.product.sellerId).subscribe(res => { this.seller = res});
+
   }
- 
+
 
   //Reserve Button
 
   //Favorite Button
-  addProductToFavoriteList(){
+  addProductToFavoriteList() {
 
-    var cookiesFavoriteProductIdList : string = " " ;
-    cookiesFavoriteProductIdList =  this.cookie.get('favoriteProductIdList');
+    var cookiesFavoriteProductIdList: string = " ";
+    cookiesFavoriteProductIdList = this.cookie.get('favoriteProductIdList');
 
     //Already Exist return Exist
-    if(cookiesFavoriteProductIdList.includes(this.product.id)){
-      this.favoriteMsg = "This Product is already added to Favorite List" ;
-      return ;
+    if (cookiesFavoriteProductIdList.includes(this.product.id)) {
+      this.favoriteMsg = "This Product is already added to Favorite List";
+      return;
     }
 
-    if (cookiesFavoriteProductIdList != ""){  
-      cookiesFavoriteProductIdList =  cookiesFavoriteProductIdList + "/" +  (this.product.id);
+    if (cookiesFavoriteProductIdList != "") {
+      cookiesFavoriteProductIdList = cookiesFavoriteProductIdList + "/" + (this.product.id);
       this.cookie.set('favoriteProductIdList', cookiesFavoriteProductIdList);
     }
     else {
@@ -52,70 +61,84 @@ export class ItemCardComponent implements OnInit {
   }
 
   //Compare Button
-  
+
   addProductToCompareList() { // add Product id to cookies
 
-    var cookiesCompareProductIdList : string = " " ;
-    cookiesCompareProductIdList =  this.cookie.get('compareProductIdList');
+    var cookiesCompareProductIdList: string = " ";
+    cookiesCompareProductIdList = this.cookie.get('compareProductIdList');
 
     //Already Exist return Exist
-    if(cookiesCompareProductIdList.includes(this.product.id)){
-      this.compareMsg = "This Product is already added" ;
-      return ;
+    if (cookiesCompareProductIdList.includes(this.product.id)) {
+      this.compareMsg = "This Product is already added";
+      return;
     }
 
     //Cannot Add more than 3 product (x/x) 
-    if(cookiesCompareProductIdList.includes("/")){
+    if (cookiesCompareProductIdList.includes("/")) {
       this.compareMsg = "You can compare up to 2 products Only";
-      return ;
+      return;
     }
 
     //Add Same type only 
-    if (this.cookie.check('subCategoryId') && this.cookie.get('subCategoryId') != this.product.subCategoryId){
+    if (this.cookie.check('subCategoryId') && this.cookie.get('subCategoryId') != this.product.subCategoryId) {
       this.compareMsg = "You can compare of the same type Only";
-      return ;
+      return;
     }
 
-    
 
-    if (cookiesCompareProductIdList != ""){  
+
+    if (cookiesCompareProductIdList != "") {
       this.header.compareProductListLength = "2";
-      cookiesCompareProductIdList =  cookiesCompareProductIdList + "/" +  (this.product.id);
+      cookiesCompareProductIdList = cookiesCompareProductIdList + "/" + (this.product.id);
       this.cookie.set('compareProductIdList', cookiesCompareProductIdList);
-    }else {
+    } else {
       cookiesCompareProductIdList = (this.product.id);
       this.cookie.set('compareProductIdList', cookiesCompareProductIdList);
       this.cookie.set('subCategoryId', this.product.subCategoryId);
     }
 
     this.compareMsg = "Your product was added successfully";
-  
+
   }
 
 
   /// 1 -  new Price = (oldPrice - ratio* oldPrice)
-  getNewPrice(price:any , saleRatio : any ){
+  getNewPrice(price: any, saleRatio: any) {
 
-    return Math.round(price - (saleRatio * price)/100);
+    return Math.round(price - (saleRatio * price) / 100);
 
   }
   //  2-  product Manufacture 
-  getBrandImage(brand : any ){
-     return "../../assets/imgs/brand/"+ brand+".png" ;
+  getBrandImage(brand: any) {
+    return "../../assets/imgs/brand/" + brand + ".png";
   }
 
-  getCompareMsg(){
+  getCompareMsg() {
     return this.compareMsg;
   }
 
-  openFullView(){
+  openFullView() {
     this.dialog.open(FullViewProductComponent, {
-      width : '800px',
+      width: '800px',
       height: '500px',
       data: {
-        product:  this.product
+        product: this.product
       }
     });
+  }
+
+  openSellerView() {
+
+
+      this.dialog.open(SellerFullViewComponent,{
+        width:'800px',
+        height:'500px',
+        data:{
+          seller : this.seller
+        }
+      })
+
+
 
   }
 

@@ -120,7 +120,9 @@ export class HeaderNavBarComponent implements OnInit {
 
      //Get the Id of Compare prodcut list from cookies
      var cookiesFavoriteProductIdList : string = this.cookie.get('favoriteProductIdList');
+
      if(cookiesFavoriteProductIdList == ""){
+       this.favoriteProductList = [];
        return;
      }
      let FavoriteProductIdList = cookiesFavoriteProductIdList.split("/");
@@ -138,9 +140,9 @@ export class HeaderNavBarComponent implements OnInit {
   deleteProductFromFavoriteList(id : any ){
 
      var cookiesFavoriteProductIdList : string = this.cookie.get('favoriteProductIdList');
-     let FavoriteProductIdList = cookiesFavoriteProductIdList.replace("/"+id, "").replace(id, "");
+     let FavoriteProductIdList = cookiesFavoriteProductIdList.replace("/"+id, "").replace(id+"/", "").replace(id,"");
 
-     if (FavoriteProductIdList != ""){
+     if (FavoriteProductIdList == ""){
       this.cookie.delete('favoriteProductIdList');
      }
 

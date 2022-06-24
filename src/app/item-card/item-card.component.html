@@ -1,13 +1,13 @@
 <div class="container_card">
-<div class="cardContent" (click)="openFullView()">
+<div class="cardContent">
   <div class="cardHeader">
-    <img class="Logo-img" src={{getBrandImage(product.brand)}}>
-    <img class="Logo-img" src="../../assets/imgs/sbitany_logo.png">
+    <img class="Logo-img" src={{getBrandImage(product.brand)}} (click)="openFullView()">
+    <img class="Logo-img" src="../../assets/imgs/sbitany_logo.png" (click)="openSellerView()">
   </div>
 
   <hr id="line">
 
-  <div class="cardBody">
+  <div class="cardBody" (click)="openFullView()">
     <div>
       <img src="{{product.photoLink}}">
     </div>
@@ -27,7 +27,7 @@
       </mat-menu>
 
     </div>
-    <div class="price">
+    <div class="price"(click)="openFullView()">
       <span *ngIf=" product.saleRatio != 0" class="oldPrice">₪{{product.price}}</span>
       <span *ngIf=" product.saleRatio != 0"  class="newPrice">₪{{getNewPrice(product.price ,
         product.saleRatio)}}</span>

@@ -48,6 +48,7 @@ import { ProductPendingRequestsComponent } from './product-pending-requests/prod
 import { SellerPendingRequestsComponent } from './seller-pending-requests/seller-pending-requests.component';
 import { FullViewProductComponent } from './full-view-product/full-view-product.component';
 import { CustomizePackagePageComponent } from './customize-package-page/customize-package-page.component';
+import { SellerFullViewComponent } from './seller-full-view/seller-full-view.component';
 
 
 // AoT requires an exported function for factories
@@ -74,7 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductPendingRequestsComponent,
     SellerPendingRequestsComponent,
     FullViewProductComponent,
-    CustomizePackagePageComponent
+    CustomizePackagePageComponent,
+    SellerFullViewComponent
   ],
   imports: [
     BrowserModule,

@@ -49,6 +49,11 @@ export class ApiService {
     return this.http.get<any>(this.baseURL +`api/items/${productId}`);
   }
 
+  getSellerDetails(SellerId : any ){
+    return this.http.get<any>(this.baseURL +`api/sellers/${SellerId}`);
+
+  }
+
   getFeatureBySubCategoryId (subCategoryId : any){
     return this.http.get<any>(this.baseURL +`api/subcategories/get-features/${subCategoryId}`);
   }
