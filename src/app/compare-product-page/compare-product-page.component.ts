@@ -11,7 +11,7 @@ export class CompareProductPageComponent implements OnInit {
 
   specialFeatureList: any = [];
   compareProductList: any = [];
-  basicFeatureList: any = ["name" , "description" ,"brand" , "price" , "saleRatio" , "color"];
+  basicFeatureList: any = ["name" , "description" ,"brand" , "price" , "saleRatio" , "color" , "dimensions" , "weight" , "warranty"];
 
   constructor(private api: ApiService,
     private cookie: CookieService) { }
@@ -23,8 +23,6 @@ export class CompareProductPageComponent implements OnInit {
     this.api.getFeatureBySubCategoryId(subCategoryId).subscribe(
       res => { this.specialFeatureList = res; }
     );
-
-    //"c4805cee-5304-466b-1fd3-08da4f035dd0"
   }
 
 

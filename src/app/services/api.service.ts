@@ -37,7 +37,7 @@ export class ApiService {
   }
 
   postNewProduct(data : any){   // Seller Side 
-    return this.http.post<any>("http://localhost:3000/productList", data );
+    return this.http.post<any>(this.baseURL +"api/items", data );
   }
 
   getProductList(){   // Client Side 

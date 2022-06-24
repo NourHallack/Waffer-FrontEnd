@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef} from '@angular/material/dialog';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -10,35 +11,73 @@ import { ApiService } from '../services/api.service';
 })
 export class AddNewProductDialogComponent implements OnInit {
 
-  addNewProductForm !: FormGroup ;
+  addNewProductForm !: FormGroup;
 
-  subCategoryList : any = [];
-  public categoryList : any ;
-  featureOfCategory : any = [];
+  subCategoryList: any = [];
+  public categoryList: any;
+  featureOfCategory: any = [];
+  basicFeatureList: any = [];
+  model:any ;
 
-  constructor(private api : ApiService,
-              private http: HttpClient) { }
+  constructor(private api: ApiService,
+              private formBuilder: FormBuilder,
+              private http: HttpClient,
+              private dialogRef : MatDialogRef<AddNewProductDialogComponent>) {
+
+    this.addNewProductForm = this.formBuilder.group({   
+      name: ['' , Validators.required],
+      price: ['' , Validators.required],
+      color: ['' , Validators.required],
+      dimensions: ['' , Validators.required],
+      weight: ['' , Validators.required],
+      photoLink: ['' , Validators.required],
+      brand: ['' , Validators.required],
+      modelNumber: ['' , Validators.required],
+      warranty: ['' , Validators.required],
+      description: ['' , Validators.required],
+      saleRatio: ['0' , ],
+      subCategoryId: ['' , Validators.required],
+      sellerId: ['bf0f7f5b-2085-450a-db30-08da51415612' ,], // Get it from Cookies
+      sortPriority: ['' ,] 
+
+    })
+  }
 
   ngOnInit(): void {
 
-    this.api.getCategoryList().subscribe( res => { this.categoryList = res ; }  );
+    this.api.getCategoryList().subscribe(res => { this.categoryList = res; });
     console.log(this.categoryList);
 
-    
+
   }
 
-  selectCategory(CategoryId : any){
+  selectCategory(CategoryId: any) {
     this.api.getSubCategoryById(CategoryId).subscribe(res => this.subCategoryList = res);
   }
 
-  selectSubCategory(subCategoryId :any){
-    this.api.getFeatureBySubCategoryId(subCategoryId).subscribe(res => console.log(res));
+  selectSubCategory(subCategoryId: any) {
+    this.api.getFeatureBySubCategoryId(subCategoryId)
+    .subscribe(res => {
+               res.forEach((element: any) => {this.addNewProductForm.addControl(element.codeName, new FormControl('', Validators.required))});
+              this.featureOfCategory = res});
+
+    this.basicFeatureList = ["name" , "price" ,"color", "photoLink" , "description" ,"brand" , "saleRatio",
+    "dimensions" , "weight" , "modelNumber" , "warranty", "sortPriority"];
   }
 
-  
-  
-  addNewProduct(){
-    
+  getLabel(feature: String) {
+    return "featureName." + feature
+  }
+
+  getFeature(feature: String) {
+    return "model." + feature
+  }
+
+
+
+  addNewProduct() {
+    this.api.postNewProduct(this.addNewProductForm.value).subscribe(); 
+    this.dialogRef.close();
 
   }
 }

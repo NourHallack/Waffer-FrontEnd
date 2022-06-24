@@ -81,7 +81,14 @@
         "color" : "Color",
         "description" : "Description",
         "price" : "Price ₪",
-        "brand" : "Brand"
+        "brand" : "Brand",
+        "modelNumber" : "Model Number",
+        "dimensions" : "Dimensions LxWxH",
+        "warranty" : "Warranty",
+        "photoLink" : "Photo Link",
+        "weight" : "Weight",
+        "sortPriority" : "Sort Priority"
+
 
     } ,
 
