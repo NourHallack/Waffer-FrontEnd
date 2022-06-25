@@ -19,6 +19,9 @@ export class WafferComponent implements OnInit {
 
   searchProduct(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
 
+  getSubCategoryProducts(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
+
+
 
 
 }

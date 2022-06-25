@@ -25,7 +25,13 @@ export class AppComponent implements OnInit{
     this.IsLoading = this.isLoadingService.isLoading$();
 
   }
+  displayLoginRegisterButton(){
+    if (this.router.url == "/"){
+      return false ;
+    }else{
+      return true ;
+    }
+  }
 
-  getSubCategoryProducts(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
 
 }

@@ -1,3 +1,3 @@
-<app-header-nav-bar (selectedPlanEvent)="getSubCategoryProducts($event)"></app-header-nav-bar>
+<app-header-nav-bar *ngIf="displayLoginRegisterButton()" ></app-header-nav-bar>
 <app-loading-spinner *ngIf="IsLoading|async " ></app-loading-spinner>
 <router-outlet></router-outlet>>
