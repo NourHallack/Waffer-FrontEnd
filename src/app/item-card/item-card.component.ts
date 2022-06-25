@@ -152,8 +152,18 @@ export class ItemCardComponent implements OnInit {
           seller : this.seller
         }
       })
+  }
 
+  isProductInFavList(){
 
+    var cookiesFavoriteProductIdList: string = " ";
+    cookiesFavoriteProductIdList = this.cookie.get('favoriteProductIdList');
+
+    //Already Exist return Exist
+    if (cookiesFavoriteProductIdList.includes(this.product.id)) {
+      return true;
+    }
+    return false ;
 
   }
 

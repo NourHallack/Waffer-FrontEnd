@@ -20,8 +20,8 @@
   <div class="cardFooter">
 
     <div class="Actions">
-      <div *ngIf="true"  class="AddToFavorite"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
-      <div *ngIf="false" class="AddedToFav"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
+      <div *ngIf="!isProductInFavList()"  class="AddToFavorite"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
+      <div *ngIf="isProductInFavList()"class="AddedToFav"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
       <div id="AddToCompare">  <mat-icon (click)="addProductToCompareList()">compare</mat-icon></div>
 
     </div>
