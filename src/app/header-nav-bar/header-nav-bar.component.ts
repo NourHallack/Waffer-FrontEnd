@@ -192,11 +192,16 @@ export class HeaderNavBarComponent implements OnInit {
   }
 
   getProductBySubCategoryId(subCategoryId: any) {
-    //this.isLoadingService.add();
+    this.isLoadingService.add();
 
-    return this.api.getProductsBySubCategoryId(subCategoryId).subscribe(
-     res => { console.log(res); this.selectedPlanEvent.emit(res);}
-    );
+    return this.api.getProductsBySubCategoryId(subCategoryId).subscribe({
+      next: res => {
+        this.selectedPlanEvent.emit(res);
+        this.isLoadingService.remove();
+      }, error: () => {
+        this.isLoadingService.remove();
+      }
+    });
   }
 
   displayLoginRegisterButton(){
