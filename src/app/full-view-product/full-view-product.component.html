@@ -2,10 +2,30 @@
     <div class="col-12 lg:col-6 product">
         <div class="Image"><a class="flex"><img class="productImage" src={{product.product.photoLink}}></a></div>
         <div class="col-12 lg:col-6 py-3 lg:pl-6 productDescription">
-            <div class="description">
+            <div class="description cardHeader">
                 <p style="flex-grow: 1;">{{product.product.name}}</p>
+                <img class="Logo-img" src={{getBrandImage(product.product.brand)}} >
+
             </div>
-           
+            <br>
+            <p>{{product.product.description}}</p>
+            <br>
+            <p>{{product.product.price}}     After sale : {{getNewPrice(product.product.price ,
+                product.product.saleRatio)}}</p>
+            <br>
+            <p>{{product.product.dimensions}}</p>
+            <br>
+            <p>{{product.product.color}}</p>
+            <br>
+            <p>{{product.product.weight}}</p>
+            <br>
+            <p>{{product.product.warranty}}</p>
+
+            <div *ngFor="let feature of specialFeatureList">
+                 <p *ngIf="getFeatureValue(feature.codeName)">{{feature.nameToShow}} : {{getFeatureValue(feature.codeName)}}</p>
+                 <br *ngIf="getFeatureValue(feature.codeName)">
+            </div>
+
 
         </div>
 

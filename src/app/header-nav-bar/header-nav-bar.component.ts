@@ -5,7 +5,9 @@ import {CustomizePackageDialogComponent} from '../customize-package-dialog/custo
 import {LoginSignInComponent} from '../login-sign-in/login-sign-in.component';
 import {NewSellerDialogComponent} from '../new-seller-dialog/new-seller-dialog.component';
 import {ApiService} from '../services/api.service';
+import { Router } from '@angular/router';
 import {IsLoadingService} from "@service-work/is-loading";
+
 
 @Component({
   selector: 'app-header-nav-bar',
@@ -30,7 +32,8 @@ export class HeaderNavBarComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private api: ApiService,
-              private cookie: CookieService, private isLoadingService: IsLoadingService) {
+              private cookie: CookieService, private isLoadingService: IsLoadingService,
+              private router: Router) {
 
     this.selectedLanguage = localStorage.getItem('lang') || "English";
 
@@ -52,6 +55,7 @@ export class HeaderNavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayLoginRegisterButton();
   }
 
   //Handle Changing the Languages
@@ -200,5 +204,7 @@ export class HeaderNavBarComponent implements OnInit {
     });
   }
 
-
+  displayLoginRegisterButton(){
+    console.log(this.router.url);
+  }
 }

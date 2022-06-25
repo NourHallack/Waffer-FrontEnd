@@ -12,6 +12,8 @@ import { ApiService } from '../services/api.service';
 })
 export class AdminPageComponent implements OnInit {
 
+  adminName : String = "Admin" ;
+
   constructor(private dialog: MatDialog,
               private api: ApiService, 
               public router: Router) {
@@ -19,6 +21,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.adminName = history.state.data;
   }
 
   openPendingProduct(){

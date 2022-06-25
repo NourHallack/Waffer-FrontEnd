@@ -123,5 +123,11 @@
     font-family: 'Tajawal', sans-serif;
 }
 
+a:hover {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+
 
 

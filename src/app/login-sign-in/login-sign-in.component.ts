@@ -48,9 +48,9 @@ export class LoginSignInComponent implements OnInit {
       next: res => {
 
         if (res.roles == "Admin") {
-          this.router.navigate(['admin']);
+          this.router.navigate(['admin'], {state: {data: res.adminName}});
         } else if (res.roles == "User") {
-          this.router.navigate(['seller']);
+          this.router.navigate(['seller'] , {state: {data: res.seller}});
         } else {
           this.router.navigate(['']);
         }

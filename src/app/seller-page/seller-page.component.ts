@@ -11,6 +11,8 @@ import { AddNewProductDialogComponent } from '../add-new-product-dialog/add-new-
 })
 export class SellerPageComponent implements OnInit {
 
+  seller : any = [];
+
   constructor(private dialog: MatDialog,
               private api: ApiService, 
               public router: Router) {
@@ -18,6 +20,8 @@ export class SellerPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.seller = history.state.data;
+
   }
 
   openAddNewProduct(){

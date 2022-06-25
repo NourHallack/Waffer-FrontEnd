@@ -6,6 +6,7 @@ import { FullViewProductComponent } from '../full-view-product/full-view-product
 import { SellerFullViewComponent } from '../seller-full-view/seller-full-view.component';
 import { ApiService } from '../services/api.service';
 import {async} from "rxjs";
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -24,9 +25,10 @@ export class ItemCardComponent implements OnInit {
   public favoriteMsg: String = "";
 
   constructor(private cookie: CookieService,
-    private dialog: MatDialog,
-    private header: HeaderNavBarComponent,
-    private api : ApiService) {
+              private dialog: MatDialog,
+              private header: HeaderNavBarComponent,
+              private api : ApiService,
+              private _snackBar: MatSnackBar) {
 
      }
 
@@ -71,18 +73,23 @@ export class ItemCardComponent implements OnInit {
     //Already Exist return Exist
     if (cookiesCompareProductIdList.includes(this.product.id)) {
       this.compareMsg = "This Product is already added";
+      this.openSnackBar(String(this.compareMsg));
       return;
     }
 
     //Cannot Add more than 3 product (x/x)
     if (cookiesCompareProductIdList.includes("/")) {
       this.compareMsg = "You can compare up to 2 products Only";
+      this.openSnackBar(String(this.compareMsg));
+
       return;
     }
 
     //Add Same type only
     if (this.cookie.check('subCategoryId') && this.cookie.get('subCategoryId') != this.product.subCategoryId) {
       this.compareMsg = "You can compare of the same type Only";
+      this.openSnackBar(String(this.compareMsg));
+
       return;
     }
 
@@ -99,6 +106,7 @@ export class ItemCardComponent implements OnInit {
     }
 
     this.compareMsg = "Your product was added successfully";
+    this.openSnackBar(String(this.compareMsg));
 
   }
 
@@ -116,6 +124,12 @@ export class ItemCardComponent implements OnInit {
 
   getCompareMsg() {
     return this.compareMsg;
+  }
+
+  openSnackBar(message: string) {
+    let config = new  MatSnackBarConfig ();
+    config.duration = 5000;
+    this._snackBar.open(message , undefined , config);
   }
 
   openFullView() {

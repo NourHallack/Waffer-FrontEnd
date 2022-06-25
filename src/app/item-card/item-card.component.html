@@ -22,10 +22,7 @@
     <div class="Actions">
       <div *ngIf="true"  class="AddToFavorite"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
       <div *ngIf="false" class="AddedToFav"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
-      <div id="AddToCompare">  <mat-icon (click)="addProductToCompareList()" [matMenuTriggerFor]="compareMsg">compare</mat-icon></div>
-      <mat-menu #compareMsg="matMenu">
-        <span class="compareMsg">{{getCompareMsg()}}</span>
-      </mat-menu>
+      <div id="AddToCompare">  <mat-icon (click)="addProductToCompareList()">compare</mat-icon></div>
 
     </div>
     <div class="price"(click)="openFullView()">

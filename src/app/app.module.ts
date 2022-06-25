@@ -29,6 +29,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 import { AppComponent } from './app.component';
 import { HeaderNavBarComponent } from './header-nav-bar/header-nav-bar.component';
@@ -99,6 +101,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatRadioModule,
     MatCardModule,
     MatTabsModule,
+    MatSnackBarModule,
     MatCheckboxModule,
     MatAutocompleteModule,
     MatMenuModule,
