@@ -22,7 +22,6 @@ export class SellerPendingRequestsComponent implements OnInit {
         this.pendingSellerList = res;
         this.isLoadingService.remove();
       }, error: () => {
-        alert("Seller declined failed")
         this.isLoadingService.remove();
       }
     });
@@ -38,11 +37,8 @@ export class SellerPendingRequestsComponent implements OnInit {
 
     this.api.acceptNewSeller(id).subscribe({
       next: res => {
-        alert("Seller has been accepted");
-
         this.isLoadingService.remove();
       }, error: () => {
-        alert("Seller acceptance failed")
         this.isLoadingService.remove();
       }
     });
@@ -53,10 +49,8 @@ export class SellerPendingRequestsComponent implements OnInit {
     this.isLoadingService.add();
     this.api.declineNewSeller(id).subscribe({
       next: res => {
-        alert("Seller has been declined")
         this.isLoadingService.remove();
       }, error: () => {
-        alert("Seller declined failed")
 
         this.isLoadingService.remove();
       }

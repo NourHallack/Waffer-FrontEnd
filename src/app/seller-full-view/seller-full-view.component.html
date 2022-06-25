@@ -1,53 +1,59 @@
+<div class="layout-flex">
+<div class="title"><h1>Seller Information</h1></div>
+  <div class="photo-properties-flex">
 
-<div class="layout">
-  <div class="title">
-    <h3>Seller Info</h3>
-  </div>
-
-  <div class="data">
-  <div class="photo">
-    <img class="sellerImage" src={{seller.seller.logo}}>
-  </div>
-  <div>
-    <hr>
-
-    <p><strong>Name: </strong>{{seller.seller.name}}</p>
-    <hr>
-    <p><strong>Email: </strong>{{seller.seller.email}}</p>
-    <hr>
-    <p><strong>Info: </strong>{{seller.seller.description}}</p>
-    <hr>
-
-    <p *ngIf="seller.seller.customerServicePhoneNumber == null"><strong> Contact number: </strong>{{seller.seller.contactPhoneNumber}}</p>
-
-    <p *ngIf="seller.seller.customerServicePhoneNumber != null"><strong> Contact number: </strong> {{seller.seller.customerServicePhoneNumber}}</p>
-    <hr>
-
-
-    <div *ngIf="seller.seller.hasStore==false"> Has Store: No</div>
-
-    <div *ngIf="seller.seller.hasStore==true"> <strong>Has Store:</strong> Yes</div>
-
-    <hr>
-
-    <p *ngIf="seller.seller.SocailMediaLink!=null"><strong>Social Media:{{seller.seller.SocailMediaLink}}</strong> </p>
-    <div *ngIf="seller.seller.SocailMediaLink!=null">
-      <hr>
+    <div class="seller-photo">
+      <img class="sellerImage" src={{seller.seller.logo}}>
     </div>
 
-    <p *ngIf="seller.seller.WebsiteLink!=null"><strong>Social Media:{{seller.seller.WebsiteLink}}</strong> </p>
-    <div  *ngIf="seller.seller.WebsiteLink!=null">
+    <div class="properties-flex">
+
+      <div class="property-flex">
+        <div class="property-name">Name</div>
+        <div>{{seller.seller.name}}</div>
+      </div>
       <hr>
-    </div>
-    <p *ngIf="seller.seller.address!=null"><strong>Location:</strong>{{seller.seller.address}} </p>
-    <div  *ngIf="seller.seller.address!=null">
+      <div class="property-flex">
+        <div class="property-name">Email</div>
+        <div>{{seller.seller.email}}</div>
+      </div>
       <hr>
+
+
+      <div class="property-flex">
+        <div class="property-name">Description</div>
+        <div>{{seller.seller.description}}</div>
+      </div>
+      <hr>
+      <div class="property-flex"
+           *ngIf="seller.seller.customerServicePhoneNumber == null && seller.seller.contactPhoneNumber == null">
+        <div class="property-name">Contact Number</div>
+        <div>{{seller.seller.contactPhoneNumber}}</div>
+      </div>
+
+      <div class="property-flex" *ngIf="seller.seller.customerServicePhoneNumber != null ">
+        <div class="property-name">Contact Number</div>
+        <div>{{seller.seller.customerServicePhoneNumber}}</div>
+      </div>
+      <hr>
+      <div class="property-flex" *ngIf="seller.seller.socialMediaLink != null ">
+        <div class="property-name">Social Media Link</div>
+        <div>{{seller.seller.socialMediaLink}}</div>
+      </div>
+      <hr>
+
+      <div class="property-flex" *ngIf="seller.seller.websiteLink != null ">
+        <div class="property-name">Website Link</div>
+        <div>{{seller.seller.websiteLink}}</div>
+      </div>
+      <hr>
+
+      <div class="property-flex" *ngIf="seller.seller.address != null ">
+        <div class="property-name">Address</div>
+        <div>{{seller.seller.address}}</div>
+      </div>
     </div>
+
   </div>
-
-
-
-</div>
-
 
 </div>

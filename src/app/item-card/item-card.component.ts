@@ -146,8 +146,8 @@ export class ItemCardComponent implements OnInit {
 
 
       this.dialog.open(SellerFullViewComponent,{
-        width:'750px',
-        height:'500px',
+        width:'1000px',
+        height:'700px',
         data:{
           seller : this.seller
         }
