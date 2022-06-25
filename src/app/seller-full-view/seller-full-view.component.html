@@ -1,10 +1,53 @@
-<p>{{seller.seller.name}}</p>
-<p>{{seller.seller.email}}</p>
-<p>{{seller.seller.description}}</p>
-<p>{{seller.seller.contactPhoneNumber}}</p>
-<p>{{seller.seller.address}}</p>
-<p>{{seller.seller.customerServicePhoneNumber}}</p>
-<p>{{seller.seller.hasStore}}</p>
+
+<div class="layout">
+  <div class="title">
+    <h3>Seller Info</h3>
+  </div>
+
+  <div class="data">
+  <div class="photo">
+    <img class="sellerImage" src={{seller.seller.logo}}>
+  </div>
+  <div>
+    <hr>
+
+    <p><strong>Name: </strong>{{seller.seller.name}}</p>
+    <hr>
+    <p><strong>Email: </strong>{{seller.seller.email}}</p>
+    <hr>
+    <p><strong>Info: </strong>{{seller.seller.description}}</p>
+    <hr>
+
+    <p *ngIf="seller.seller.customerServicePhoneNumber == null"><strong> Contact number: </strong>{{seller.seller.contactPhoneNumber}}</p>
+
+    <p *ngIf="seller.seller.customerServicePhoneNumber != null"><strong> Contact number: </strong> {{seller.seller.customerServicePhoneNumber}}</p>
+    <hr>
+
+
+    <div *ngIf="seller.seller.hasStore==false"> Has Store: No</div>
+
+    <div *ngIf="seller.seller.hasStore==true"> <strong>Has Store:</strong> Yes</div>
+
+    <hr>
+
+    <p *ngIf="seller.seller.SocailMediaLink!=null"><strong>Social Media:{{seller.seller.SocailMediaLink}}</strong> </p>
+    <div *ngIf="seller.seller.SocailMediaLink!=null">
+      <hr>
+    </div>
+
+    <p *ngIf="seller.seller.WebsiteLink!=null"><strong>Social Media:{{seller.seller.WebsiteLink}}</strong> </p>
+    <div  *ngIf="seller.seller.WebsiteLink!=null">
+      <hr>
+    </div>
+    <p *ngIf="seller.seller.address!=null"><strong>Location:</strong>{{seller.seller.address}} </p>
+    <div  *ngIf="seller.seller.address!=null">
+      <hr>
+    </div>
+  </div>
 
 
 
+</div>
+
+
+</div>

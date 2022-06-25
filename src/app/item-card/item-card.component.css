@@ -81,8 +81,11 @@
   flex-direction:row;
   gap:20px;
 }
+.mat-dialog-container{
+  padding: 0px !important;
 
-#AddToFavorite{
+}
+.AddToFavorite{
   width: 32px;
   border: 1px solid #9a9a9a;
   cursor: pointer;
@@ -93,10 +96,10 @@
   justify-content: center
 }
 
-#AddToFavorite :hover{
+.AddToFavorite :hover{
   color: #e00000;
 }
-#AddToFavorite mat-icon {
+.AddToFavorite mat-icon {
   color:#9a9a9a;
   font-size: 25px;
 }

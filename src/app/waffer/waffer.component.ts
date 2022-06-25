@@ -16,7 +16,6 @@ export class WafferComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getSubCategoryProducts(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
 
   searchProduct(prodcuts: any): void{this.resultComponent.getProducts(prodcuts);}
 

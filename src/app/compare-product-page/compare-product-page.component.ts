@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { ApiService } from '../services/api.service';
+import {Component, OnInit} from '@angular/core';
+import {CookieService} from 'ngx-cookie-service';
+import {ApiService} from '../services/api.service';
+import {IsLoadingService} from "@service-work/is-loading";
 
 @Component({
   selector: 'app-compare-product-page',
@@ -14,17 +15,24 @@ export class CompareProductPageComponent implements OnInit {
   basicFeatureList: any = ["name" , "description" ,"brand" , "price" , "saleRatio" , "color" , "dimensions" , "weight" , "warranty"];
 
   constructor(private api: ApiService,
-    private cookie: CookieService) { }
+              private cookie: CookieService, private isLoadingService: IsLoadingService) {
+  }
 
   ngOnInit(): void {
 
     this.getCompareList();
     var subCategoryId = this.cookie.get('subCategoryId');
-    this.api.getFeatureBySubCategoryId(subCategoryId).subscribe(
-      res => { this.specialFeatureList = res; }
-    );
-  }
+    this.isLoadingService.add();
 
+    this.api.getFeatureBySubCategoryId(subCategoryId).subscribe({
+      next: res => {
+        this.specialFeatureList = res;
+        this.isLoadingService.remove();
+      }, error: () => {
+        this.isLoadingService.remove();
+      }
+    });
+  }
 
   getCompareList() {
 
@@ -33,12 +41,21 @@ export class CompareProductPageComponent implements OnInit {
 
     this.compareProductList = [];
     for (let i = 0; i < CompareProductIdList.length; i++) {
-      this.api.getProductById(CompareProductIdList[i]).subscribe(res =>
-        this.compareProductList.push(res));
+      this.isLoadingService.add();
+      this.api.getProductById(CompareProductIdList[i]).subscribe({
+        next: res => {
+          this.compareProductList.push(res);
+          this.isLoadingService.remove();
+
+        }, error: () => {
+          this.isLoadingService.remove();
+
+        }
+      });
     }
     console.log(this.compareProductList);
     //console.log(this.compareProductList);
-   
+
   }
 
   getFeatureValue(feature: String, productNo: any) {

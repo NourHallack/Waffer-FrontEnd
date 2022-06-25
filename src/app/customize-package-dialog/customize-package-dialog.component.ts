@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ApiService } from '../services/api.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ApiService} from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
+import {IsLoadingService} from "@service-work/is-loading";
 
 @Component({
   selector: 'app-customize-package-dialog',
@@ -10,31 +11,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./customize-package-dialog.component.css']
 })
 export class CustomizePackageDialogComponent implements OnInit {
-  
+
   // 1- Send Api
-  // 2- Open Customize Package Page 
-  // 3- Fill table of devices 
+  // 2- Open Customize Package Page
+  // 3- Fill table of devices
 
   customizedPackageForm !: FormGroup ;
   autoTicks = false;
-  showTicks = false;  
+  showTicks = false;
   tickInterval = 1;
 
-  applianceList: any[] = [{display : "TV" , guid : "4c7efa58-a80b-4d43-3901-08da50794a19"}, 
+  applianceList: any[] = [{display : "TV" , guid : "4c7efa58-a80b-4d43-3901-08da50794a19"},
                           {display : "Refrigerator" , guid : "77176850-31c2-4f74-1702-08da5085a527"},
                           {display : "Vaccum Cleaner" , guid : "c4805cee-5304-466b-1fd3-08da4f035dd0"},
                           {display : "Washer" , guid : "3433f09b-e255-46ae-3902-08da50794a19"},
                           {display : "Hairdryer" , guid : "46220106-b790-4ec2-3900-08da50794a19"}
-                          ]; 
+                          ];
   brandList : String[] = ["Any","BISSELL" , "DYSON" , "DREAME" , "LG" , "PHILIPS" , "MIDEA" ,"MONSTER",
                           "FG" , "BEKO" , "TCL","GINA" , "MAGIC" , "REMINGTON"];
-  
 
 
-  constructor( private formBuilder: FormBuilder,
-               private api : ApiService,
-               private dialogRef : MatDialogRef<CustomizePackageDialogComponent>,
-               public router : Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private api: ApiService,
+              private dialogRef: MatDialogRef<CustomizePackageDialogComponent>,
+              public router: Router, private isLoadingService: IsLoadingService) {
+  }
 
   ngOnInit(): void {
 
@@ -62,10 +63,10 @@ export class CustomizePackageDialogComponent implements OnInit {
     return 0;
   }
 
- 
+
   generatePackage(){
 
-    // Loader 
+    // Loader
 
     this.customizedPackageForm.value.houseSpace = Number(this.customizedPackageForm.value.houseSpace);
     this.customizedPackageForm.value.budget = Number(this.customizedPackageForm.value.budget);
@@ -73,10 +74,19 @@ export class CustomizePackageDialogComponent implements OnInit {
 
     console.log(this.customizedPackageForm.value);
 
-    //Post API   // display result 
-    this.api.customizeMyPackage(this.customizedPackageForm.value).subscribe(res=>   this.router.navigate(['customizePackagePage'], {state: {data : res}}));
+    //Post API   // display result
+    this.isLoadingService.add();
 
-  
+    this.api.customizeMyPackage(this.customizedPackageForm.value).subscribe({
+      next: res => {
+        this.router.navigate(['customizePackagePage'], {state: {data: res}});
+        this.isLoadingService.remove();
+      }, error: () => {
+        this.isLoadingService.remove();
+      }
+    });
+
+
     //close Dialog
     this.dialogRef.close();
 

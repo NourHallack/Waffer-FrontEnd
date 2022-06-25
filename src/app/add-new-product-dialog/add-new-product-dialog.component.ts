@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
-import { ApiService } from '../services/api.service';
+import {ApiService} from '../services/api.service';
+import {IsLoadingService} from "@service-work/is-loading";
 
 @Component({
   selector: 'app-add-new-product-dialog',
@@ -22,23 +23,23 @@ export class AddNewProductDialogComponent implements OnInit {
   constructor(private api: ApiService,
               private formBuilder: FormBuilder,
               private http: HttpClient,
-              private dialogRef : MatDialogRef<AddNewProductDialogComponent>) {
+              private dialogRef: MatDialogRef<AddNewProductDialogComponent>, private isLoadingService: IsLoadingService) {
 
-    this.addNewProductForm = this.formBuilder.group({   
-      name: ['' , Validators.required],
-      price: ['' , Validators.required],
-      color: ['' , Validators.required],
-      dimensions: ['' , Validators.required],
-      weight: ['' , Validators.required],
-      photoLink: ['' , Validators.required],
-      brand: ['' , Validators.required],
-      modelNumber: ['' , Validators.required],
-      warranty: ['' , Validators.required],
-      description: ['' , Validators.required],
+    this.addNewProductForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      price: ['', Validators.required],
+      color: ['', Validators.required],
+      dimensions: ['', Validators.required],
+      weight: ['', Validators.required],
+      photoLink: ['', Validators.required],
+      brand: ['', Validators.required],
+      modelNumber: ['', Validators.required],
+      warranty: ['', Validators.required],
+      description: ['', Validators.required],
       saleRatio: ['0' , ],
       subCategoryId: ['' , Validators.required],
       sellerId: ['bf0f7f5b-2085-450a-db30-08da51415612' ,], // Get it from Cookies
-      sortPriority: ['' ,] 
+      sortPriority: ['',]
 
     })
   }
@@ -56,13 +57,23 @@ export class AddNewProductDialogComponent implements OnInit {
   }
 
   selectSubCategory(subCategoryId: any) {
-    this.api.getFeatureBySubCategoryId(subCategoryId)
-    .subscribe(res => {
-               res.forEach((element: any) => {this.addNewProductForm.addControl(element.codeName, new FormControl('', Validators.required))});
-              this.featureOfCategory = res});
+    this.isLoadingService.add();
 
-    this.basicFeatureList = ["name" , "price" ,"color", "photoLink" , "description" ,"brand" , "saleRatio",
-    "dimensions" , "weight" , "modelNumber" , "warranty", "sortPriority"];
+    this.api.getFeatureBySubCategoryId(subCategoryId)
+      .subscribe({
+        next: res => {
+          res.forEach((element: any) => {
+            this.addNewProductForm.addControl(element.codeName, new FormControl('', Validators.required))
+          });
+          this.featureOfCategory = res;
+          this.isLoadingService.remove();
+        }, error: () => {
+          this.isLoadingService.remove();
+        }
+      });
+
+    this.basicFeatureList = ["name", "price", "color", "photoLink", "description", "brand", "saleRatio",
+      "dimensions", "weight", "modelNumber", "warranty", "sortPriority"];
   }
 
   getLabel(feature: String) {
@@ -76,7 +87,14 @@ export class AddNewProductDialogComponent implements OnInit {
 
 
   addNewProduct() {
-    this.api.postNewProduct(this.addNewProductForm.value).subscribe(); 
+    this.isLoadingService.add();
+    this.api.postNewProduct(this.addNewProductForm.value).subscribe({
+      next: res => {
+        this.isLoadingService.remove();
+      }, error: () => {
+        this.isLoadingService.remove();
+      }
+    });
     this.dialogRef.close();
 
   }

@@ -21,7 +21,7 @@ export class ApiService {
 
 
   baseURL : String = "http://nazeehrimawi-001-site1.dtempurl.com/";
- 
+
   constructor(private http : HttpClient) { }
 
   postRegisterNewSeller(data : any , auth_token : any){   // Client Side + No authorization
@@ -32,15 +32,15 @@ export class ApiService {
     return this.http.post<any>(this.baseURL + "api/Auth/login" , data);
   }
 
-  getRegisterNewSeller(data : any){   // Admin Side 
+  getRegisterNewSeller(data : any){   // Admin Side
     return this.http.get<any>("http://localhost:3000/sellerRegisterRequest/");
   }
 
-  postNewProduct(data : any){   // Seller Side 
+  postNewProduct(data : any){   // Seller Side
     return this.http.post<any>(this.baseURL +"api/items", data );
   }
 
-  getProductList(){   // Client Side 
+  getProductList(){   // Client Side
     return this.http.get<any>(this.baseURL +"api/items");
 
   }
@@ -67,7 +67,7 @@ export class ApiService {
   }
 
   getSubCategoryById(categoryId : any){
-    return this.http.get<any>(this.baseURL +`category-id/${categoryId}`);
+    return this.http.get<any>(this.baseURL +`api/subcategories/category-id/${categoryId}`);
   }
 
   getProductsBySubCategoryId (subCategoryId : any){
@@ -75,7 +75,7 @@ export class ApiService {
   }
 
   //Search
-  doSearch(searchFor : string , sortBy : string ){   // Client Side 
+  doSearch(searchFor : string , sortBy : string ){   // Client Side
     let params: HttpParams = new HttpParams();
     params.set('searchFor', searchFor );
     params.set('sortBy', sortBy);
@@ -83,15 +83,15 @@ export class ApiService {
 
     return this.http.get<any>(this.baseURL +`api/items?searchFor=${searchFor}&sortBy=${sortBy}` );
 
-  } 
+  }
 
-  //CustomizePackage 
+  //CustomizePackage
   customizeMyPackage(data : any){
     return this.http.post<any>(this.baseURL +"api/items/customized-package", data );
 
   }
 
-  //Admin Portal 
+  //Admin Portal
 
   getNewSellerPendingRequests(){
     return this.http.get<any>(this.baseURL + "api/sellers/pending-sellers");
@@ -117,12 +117,12 @@ export class ApiService {
     return this.http.post<any>(this.baseURL +`/api/items/reject/${id}` , id);
   }
 
-  
-
-  
 
 
-  
+
+
+
+
 
 
 

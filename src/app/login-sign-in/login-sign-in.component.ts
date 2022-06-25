@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ApiService } from '../services/api.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ApiService} from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
+import {IsLoadingService} from "@service-work/is-loading";
 
 
 /** TO Do
@@ -23,41 +24,48 @@ export class LoginSignInComponent implements OnInit {
   user : any = "" ;
 
   constructor(private formBuilder: FormBuilder,
-              private api : ApiService,
-              private dialogRef : MatDialogRef<LoginSignInComponent>,
+              private api: ApiService,
+              private dialogRef: MatDialogRef<LoginSignInComponent>,
               public router: Router,
-              private cookie: CookieService) { }
+              private cookie: CookieService, private isLoadingService: IsLoadingService) {
+  }
 
   ngOnInit(): void {
 
     this.SignInForm = this.formBuilder.group({
       email : ['' , Validators.required],
-      password : ['' , Validators.required]      
+      password: ['', Validators.required]
     });
 
-   
+
   }
 
   // SignIn Button
-  signIn(){
-    this.api.login(this.SignInForm.value).subscribe( res => {
+  signIn() {
+    this.isLoadingService.add();
 
-      if ( res.roles == "Admin"){
-        this.router.navigate(['admin']);
-      }else if (res.roles == "User"){
-        this.router.navigate(['seller']);
-      }else {
-        this.router.navigate(['']);
+    this.api.login(this.SignInForm.value).subscribe({
+      next: res => {
+
+        if (res.roles == "Admin") {
+          this.router.navigate(['admin']);
+        } else if (res.roles == "User") {
+          this.router.navigate(['seller']);
+        } else {
+          this.router.navigate(['']);
+        }
+
+        this.cookie.set('jwt', res.token);
+        this.isLoadingService.remove();
+
+      }, error: () => {
+        this.isLoadingService.remove();
       }
-
-      this.cookie.set('jwt', res.token) ;
-
-    }  );
+    });
 
     this.dialogRef.close();
 
-    
 
-  } 
+  }
 
 }

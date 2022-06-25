@@ -1,0 +1,32 @@
+.layout{
+  font-family: 'Tajawal', sans-serif !important;
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap:50px;
+}
+h3{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.title{
+  margin-top:-25px;
+  width:110%;
+  height:50px;
+  background:gray;
+  text-align: center;
+  color:white;
+}
+.data{
+  display:flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.sellerImage {
+  min-width: 150px;
+  max-width: 250px;
+}

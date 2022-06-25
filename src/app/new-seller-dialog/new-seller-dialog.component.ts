@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ApiService } from '../services/api.service';
+import {ApiService} from '../services/api.service';
 import {MatDialogRef} from '@angular/material/dialog';
+import {IsLoadingService} from "@service-work/is-loading";
 
 @Component({
   selector: 'app-new-seller-dialog',
@@ -15,9 +16,10 @@ export class NewSellerDialogComponent implements OnInit {
 
   newSellerForm !: FormGroup ;
 
-  constructor( private formBuilder: FormBuilder,
-                private api : ApiService,
-                private dialogRef : MatDialogRef<NewSellerDialogComponent>) { }
+  constructor(private formBuilder: FormBuilder,
+              private api: ApiService,
+              private dialogRef: MatDialogRef<NewSellerDialogComponent>, private isLoadingService: IsLoadingService) {
+  }
 
   ngOnInit(): void {
 
@@ -33,7 +35,7 @@ export class NewSellerDialogComponent implements OnInit {
   }
 
   presentForm() {
-    this.displayRules = false ; 
+    this.displayRules = false ;
   }
 
   getErrorMessage() {
@@ -48,17 +50,24 @@ export class NewSellerDialogComponent implements OnInit {
 
     this.newSellerForm.value.hasStore= this.newSellerForm.value.hasStore == 'true' ? true : false ;
 
-    if(this.newSellerForm.valid){
-      this.api.postRegisterNewSeller(this.newSellerForm.value , "1234")
-      .subscribe(
-        { next:(res) => {
-            alert("New Seller Register Request was sent Successfully");
-            this.newSellerForm.reset();
-            this.dialogRef.close();
-          },
+    if(this.newSellerForm.valid) {
+      this.isLoadingService.add();
+
+      this.api.postRegisterNewSeller(this.newSellerForm.value, "1234")
+        .subscribe(
+          {
+            next: (res) => {
+              this.isLoadingService.remove();
+
+              this.newSellerForm.reset();
+              this.dialogRef.close();
+
+            },
             error:() => {
+              this.isLoadingService.remove();
+
               alert("Error while sending New Seller Register Request")
-          }
+            }
         }
       )
     }

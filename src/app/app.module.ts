@@ -49,6 +49,7 @@ import { SellerPendingRequestsComponent } from './seller-pending-requests/seller
 import { FullViewProductComponent } from './full-view-product/full-view-product.component';
 import { CustomizePackagePageComponent } from './customize-package-page/customize-package-page.component';
 import { SellerFullViewComponent } from './seller-full-view/seller-full-view.component';
+import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
 
 
 // AoT requires an exported function for factories
@@ -76,7 +77,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SellerPendingRequestsComponent,
     FullViewProductComponent,
     CustomizePackagePageComponent,
-    SellerFullViewComponent
+    SellerFullViewComponent,
+    LoadingSpinnerComponent
+
   ],
   imports: [
     BrowserModule,
@@ -108,7 +111,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-    })
+    }),
   ],
   providers: [
     CookieService,
@@ -116,5 +119,5 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 }

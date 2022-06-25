@@ -5,6 +5,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FullViewProductComponent } from '../full-view-product/full-view-product.component';
 import { SellerFullViewComponent } from '../seller-full-view/seller-full-view.component';
 import { ApiService } from '../services/api.service';
+import {async} from "rxjs";
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ItemCardComponent implements OnInit {
     private dialog: MatDialog,
     private header: HeaderNavBarComponent,
     private api : ApiService) {
-      
+
      }
 
   ngOnInit(): void {
@@ -73,13 +74,13 @@ export class ItemCardComponent implements OnInit {
       return;
     }
 
-    //Cannot Add more than 3 product (x/x) 
+    //Cannot Add more than 3 product (x/x)
     if (cookiesCompareProductIdList.includes("/")) {
       this.compareMsg = "You can compare up to 2 products Only";
       return;
     }
 
-    //Add Same type only 
+    //Add Same type only
     if (this.cookie.check('subCategoryId') && this.cookie.get('subCategoryId') != this.product.subCategoryId) {
       this.compareMsg = "You can compare of the same type Only";
       return;
@@ -108,7 +109,7 @@ export class ItemCardComponent implements OnInit {
     return Math.round(price - (saleRatio * price) / 100);
 
   }
-  //  2-  product Manufacture 
+  //  2-  product Manufacture
   getBrandImage(brand: any) {
     return "../../assets/imgs/brand/" + brand + ".png";
   }
@@ -131,7 +132,7 @@ export class ItemCardComponent implements OnInit {
 
 
       this.dialog.open(SellerFullViewComponent,{
-        width:'800px',
+        width:'750px',
         height:'500px',
         data:{
           seller : this.seller
