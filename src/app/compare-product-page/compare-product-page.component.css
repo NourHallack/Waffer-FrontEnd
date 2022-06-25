@@ -2,8 +2,8 @@
     margin-left: 300px;
     margin-right: 300px;
     margin-top: 20px;
-    
-    
+
+
 }
 
 .title{
@@ -22,8 +22,8 @@
 }
 
 .productImg{
-   width: 300px;
-   height: 300px;
+  margin-left:-50px;
+   width: 230px;
 }
 
 .topic{
@@ -40,7 +40,7 @@
 table {
     table-layout: fixed;
 }
-  
+
   td {
     overflow: hidden;
     white-space: nowrap;

@@ -94,10 +94,25 @@
   align-items: center;
   border-radius: 50%;
   justify-content: center
+
 }
 
 .AddToFavorite :hover{
   color: #e00000;
+}
+.AddedToFav{
+  width: 32px;
+  border: 1px solid #9a9a9a;
+  cursor: pointer;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center
+}
+.AddedToFav mat-icon{
+  color: #e00000;
+
 }
 .AddToFavorite mat-icon {
   color:#9a9a9a;
