@@ -103,8 +103,8 @@
 
     <div class="example-spacer"></div>
 
-    <a mat-raised-button (click)="openLoginSignInDialog()">{{'Menu.Login' | translate}}</a>
-    <a mat-button (click)="openNewSellerDialog()">{{'Menu.RegisterNewSeller' | translate}}</a>
+    <a mat-raised-button *ngIf="displayLoginRegisterButton()" (click)="openLoginSignInDialog()">{{'Menu.Login' | translate}}</a>
+    <a mat-button *ngIf="displayLoginRegisterButton()" (click)="openNewSellerDialog()">{{'Menu.RegisterNewSeller' | translate}}</a>
 
     <div class="example-spacer"></div>
 

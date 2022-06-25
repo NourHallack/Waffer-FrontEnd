@@ -205,6 +205,10 @@ export class HeaderNavBarComponent implements OnInit {
   }
 
   displayLoginRegisterButton(){
-    console.log(this.router.url);
+    if (this.router.url == "/admin" || this.router.url == "/seller"){
+      return false ;
+    }else{
+      return true ;
+    }
   }
 }
