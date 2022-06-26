@@ -98,7 +98,7 @@ export class ApiService {
   }
 
   acceptNewSeller(id : any ){
-    return this.http.post<any>(this.baseURL +`api/sellers/verify-seller?sellerId=${id}&settings=1`,"");
+    return this.http.post<any>(this.baseURL +`api/sellers/verify-seller?sellerId=${id}&settings=2`,"");
   }
 
   declineNewSeller(id : any ){

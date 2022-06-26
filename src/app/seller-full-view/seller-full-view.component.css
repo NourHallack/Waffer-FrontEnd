@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
 }
 
 .title {
@@ -12,8 +12,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-
-
 }
 
 .title h1 {
@@ -28,9 +26,9 @@
   width:100%;
 
 }
-.seller-photo {
+.seller-photo img {
   min-height: 200px;
-  max-height: 300px;
+  max-height: 350px;
 }
 
 .properties-flex {

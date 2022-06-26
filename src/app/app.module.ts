@@ -52,6 +52,7 @@ import { FullViewProductComponent } from './full-view-product/full-view-product.
 import { CustomizePackagePageComponent } from './customize-package-page/customize-package-page.component';
 import { SellerFullViewComponent } from './seller-full-view/seller-full-view.component';
 import {LoadingSpinnerComponent} from "./loading-spinner/loading-spinner.component";
+import {MobileHeaderNavBarComponent} from "./mobile-header-nav-bar/mobile-header-nav-bar.component";
 
 
 // AoT requires an exported function for factories
@@ -80,7 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FullViewProductComponent,
     CustomizePackagePageComponent,
     SellerFullViewComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    MobileHeaderNavBarComponent
 
   ],
   imports: [

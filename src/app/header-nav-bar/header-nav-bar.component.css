@@ -1,7 +1,12 @@
+@media (max-width: 500px) {
+  .MainNavbar {
+    display: none;
+  }
+}
 .mat-toolbar{
     background-color: var(--primary-color);
-    color: var(--background-color); 
-    margin-bottom: 0;  
+    color: var(--background-color);
+    margin-bottom: 0;
     margin-top: 0;
 }
 
@@ -33,7 +38,7 @@
     font-family: 'Tajawal', sans-serif;
 }
 
-.mat-menu-panel { 
+.mat-menu-panel {
     max-width: none !important;
     padding: 10px;
 
@@ -45,7 +50,7 @@
     background-color: var(--primary-color);
     width: 100%;
     margin: auto;
-   
+
 }
 
 .actionTitle{

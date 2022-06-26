@@ -16,8 +16,11 @@ export class AppComponent implements OnInit{
   public  IsLoading: Observable<boolean> | undefined;
   constructor( private translateService : TranslateService,private isLoadingService: IsLoadingService, private router: Router){
     this.translateService.setDefaultLang('English');
+    document.dir="ltr";
     this.translateService.use(localStorage.getItem('lang') || 'English') ;
-    document.dir = localStorage.getItem('lang') == 'English' ? "ltr" : "rtl" ;
+
+    document.dir = localStorage.getItem('lang') !== 'Arabic' ? "ltr" : "rtl" ;
+
 
   }
 

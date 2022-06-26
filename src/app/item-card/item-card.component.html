@@ -5,17 +5,15 @@
     <img class="Logo-img" src="../../assets/imgs/sbitany_logo.png" (click)="openSellerView()">
   </div>
 
-  <hr id="line">
-
+  <hr>
   <div class="cardBody" (click)="openFullView()">
     <div>
       <img src="{{product.photoLink}}">
     </div>
-
-
-    <p>{{product.description}}</p>
+    {{product.description}}
 
   </div>
+  <hr>
 
   <div class="cardFooter">
 
