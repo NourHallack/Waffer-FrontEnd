@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {ApiService} from '../services/api.service';
 import {IsLoadingService} from "@service-work/is-loading";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-add-new-product-dialog',
@@ -23,6 +24,7 @@ export class AddNewProductDialogComponent implements OnInit {
   constructor(private api: ApiService,
               private formBuilder: FormBuilder,
               private http: HttpClient,
+              private cookie: CookieService,
               private dialogRef: MatDialogRef<AddNewProductDialogComponent>, private isLoadingService: IsLoadingService) {
 
     this.addNewProductForm = this.formBuilder.group({
@@ -38,7 +40,7 @@ export class AddNewProductDialogComponent implements OnInit {
       description: ['', Validators.required],
       saleRatio: ['0' , ],
       subCategoryId: ['' , Validators.required],
-      sellerId: ['bf0f7f5b-2085-450a-db30-08da51415612' ,], // Get it from Cookies
+      sellerId: [ this.cookie.get('sellerId'), ], // Get it from Cookies
       sortPriority: ['',]
 
     })
