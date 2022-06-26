@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import {IsLoadingService} from "@service-work/is-loading";
 
@@ -10,7 +10,7 @@ import {IsLoadingService} from "@service-work/is-loading";
 })
 export class ResultPageComponent implements OnInit {
 
-  public productList : any ;
+ public productList : any ;
 
   constructor(private http: HttpClient ,
               private api : ApiService, private isLoadingService: IsLoadingService) { }

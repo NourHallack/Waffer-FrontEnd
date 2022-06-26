@@ -140,8 +140,6 @@ export class ItemCardComponent implements OnInit {
       case "50068c0f-7b00-4325-afb3-08da55c7d776": {
         return "../../assets/imgs/seller/plaza.png";
       }
-
-
       default: { 
         return "../../assets/imgs/seller/sbitany.png";
         
