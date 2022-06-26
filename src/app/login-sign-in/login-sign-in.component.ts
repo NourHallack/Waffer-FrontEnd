@@ -50,7 +50,8 @@ export class LoginSignInComponent implements OnInit {
         if (res.roles == "Admin") {
           this.router.navigate(['admin'], {state: {data: res.adminName}});
         } else if (res.roles == "User") {
-          this.cookie.set('sellerId', res.seller.sellerId);
+          console
+          this.cookie.set('sellerId', res.seller.id);
           this.router.navigate(['seller'] , {state: {data: res.seller}});
         } else {
           this.router.navigate(['']);
