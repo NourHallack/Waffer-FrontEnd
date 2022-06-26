@@ -31,7 +31,7 @@
                 <p>{{'CustomizePackage.Dialog.PriceRange' | translate}} : {{this.customizedPackageForm.value.budget}} ₪
                 </p>
                 <mat-slider formControlName="budget" thumbLabel [displayWith]="formatLabel"
-                    [tickInterval]="getSliderTickInterval()" min="1000" max="10000" step="1000">
+                    [tickInterval]="getSliderTickInterval()" min="3000" max="20000" step="500">
                 </mat-slider>
             </li>
 
