@@ -119,8 +119,25 @@
   color:#9a9a9a;
   font-size: 25px;
 }
+----------------------
 
-#AddToCompare{
+.AddToCompare{
+  width: 32px;
+  border: 1px solid #9a9a9a;
+  cursor: pointer;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  justify-content: center
+
+}
+
+.AddToCompare :hover{
+  color: #0404c0;
+
+}
+.AddedToComp{
   width: 32px;
   border: 1px solid #9a9a9a;
   cursor: pointer;
@@ -130,15 +147,14 @@
   border-radius: 50%;
   justify-content: center
 }
-#AddToCompare mat-icon {
+.AddedToComp mat-icon{
+  color: #0404c0;
+}
+.AddToCompare mat-icon {
   color:#9a9a9a;
   font-size: 25px;
 }
 
-#AddToCompare :hover{
-  color: #0404c0;
-
-}
 .compareMsg{
   color : black;
   font-size:medium;

@@ -28,16 +28,18 @@ input[type=number]::-webkit-inner-spin-button {
 
  ::ng-deep.mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
     height: 20px;
-    border-radius: 10px
+    border-radius: 10px;
+    color: white !important;
   }
 
  ::ng-deep .mat-slider.mat-accent .mat-slider-track-fill, 
            .mat-slider.mat-accent .mat-slider-thumb, 
            .mat-slider.mat-accent .mat-slider-thumb-label {
     background-color:  var(--primary-color) !important;
+    color: white !important;
 
-    
 }
+
 
 
 ::ng-deep .mat-accent .mat-slider-track-fill {
@@ -48,7 +50,7 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--primary-color) !important;
     font-size:x-large;
     font-family: 'Tajawal', sans-serif;
-    color: white;
+    font: white !important;
     border: solid 2px gray;
 
 

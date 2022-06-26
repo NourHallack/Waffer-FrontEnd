@@ -2,7 +2,7 @@
     <h1 class="title">
         <mat-icon style="color: var(--primary-color);">engineering</mat-icon>My Customized Package
     </h1>
-    <div class="maintenance card" *ngFor="let product of productList">
+    <!-- <div class="maintenance card" *ngFor="let product of productList">
         <div><a class="test"><img class="maintenanceImage" src={{product.photoLink}}></a></div>
         <div class="productDescription">
             <div class="test2">
@@ -17,6 +17,19 @@
             <p> {{product.color}}</p>
             <p> Before the Sale : ₪{{product.price}} - After the Sale: ₪{{getNewPrice(product.price, product.saleRatio)}}</p>
         </div>
+    </div> -->
+
+    <div class="container" style="margin-top: 30px;">
+        <div class="row">
+            <ng-container class="" *ngFor="let item of productList">
+                <div class="col-md-4">
+                    <div style="margin-bottom: 15px;">
+                        <app-item-card [product]="item"></app-item-card>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
     </div>
+    
     <div class="totalPrice">Total Package Price:  ₪{{calculateTotalPackagePrice()}}</div>
 </div>
