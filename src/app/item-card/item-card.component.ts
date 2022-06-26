@@ -122,6 +122,35 @@ export class ItemCardComponent implements OnInit {
     return "../../assets/imgs/brand/" + brand + ".png";
   }
 
+  getSellerImage(sellerId : any ) {
+
+    switch(sellerId){
+      case "bf0f7f5b-2085-450a-db30-08da51415612" : {
+        return "../../assets/imgs/seller/sbitany.png";  
+      }
+      case "eedb91d4-0621-4db1-afb0-08da55c7d776": {
+        return "../../assets/imgs/seller/sm.png";
+      }
+      case "dfd18b98-8b8b-49f6-afb1-08da55c7d776": {
+        return "../../assets/imgs/seller/sg.PNG";
+      }
+      case "35109f66-0130-4202-afb2-08da55c7d776": {
+        return "../../assets/imgs/seller/maslamani.png";
+      }
+      case "50068c0f-7b00-4325-afb3-08da55c7d776": {
+        return "../../assets/imgs/seller/plaza.png";
+      }
+
+
+      default: { 
+        return "../../assets/imgs/seller/sbitany.png";
+        
+     }  
+
+    }
+    
+  }
+
   getCompareMsg() {
     return this.compareMsg;
   }
