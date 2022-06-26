@@ -22,7 +22,8 @@
     <div class="Actions">
       <div *ngIf="!isProductInFavList()"  class="AddToFavorite"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
       <div *ngIf="isProductInFavList()"class="AddedToFav"><mat-icon (click)="addProductToFavoriteList()">favorite</mat-icon></div>
-      <div id="AddToCompare">  <mat-icon (click)="addProductToCompareList()">compare</mat-icon></div>
+      <div *ngIf="!isProductInCompareList()" class="AddToCompare">  <mat-icon (click)="addProductToCompareList()">compare</mat-icon></div>
+      <div *ngIf="isProductInCompareList()" class="AddedToComp">  <mat-icon (click)="addProductToCompareList()">compare</mat-icon></div>
 
     </div>
     <div class="price"(click)="openFullView()">

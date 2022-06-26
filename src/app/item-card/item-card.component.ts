@@ -194,4 +194,17 @@ export class ItemCardComponent implements OnInit {
 
   }
 
+  isProductInCompareList(){
+
+    var cookiesCompareProductIdList: string = " ";
+    cookiesCompareProductIdList = this.cookie.get('compareProductIdList');
+
+    
+    if (cookiesCompareProductIdList.includes(this.product.id)) {
+      return true;
+    }
+    return false ;
+
+  }
+
 }
