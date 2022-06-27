@@ -1,11 +1,11 @@
 .comparePage{
     margin-left: 300px;
     margin-right: 300px;
-    margin-top: 20px;  
+    margin-top: 20px;
 }
 
 
-  
+
 .title{
 
     font-family: 'Tajawal', sans-serif;
@@ -13,6 +13,7 @@
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 30px;
+  text-align: center;
 
 }
 
@@ -28,7 +29,7 @@
     flex-flow: row;
 
     margin-bottom: 20px;
-     
+
 }
 
 .test{
@@ -73,4 +74,9 @@
     font-size: x-large;
     font-weight: bold;
     color: var(--primary-color);
+  font-family: 'Tajawal', sans-serif;
+  border: 2px solid black;
+  text-align: center;
+padding :5px;
+
 }

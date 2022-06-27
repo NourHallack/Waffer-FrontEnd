@@ -18,6 +18,7 @@
             <p> Before the Sale : ₪{{product.price}} - After the Sale: ₪{{getNewPrice(product.price, product.saleRatio)}}</p>
         </div>
     </div> -->
+  <div  class="totalPrice">Total Package Price:  ₪ {{calculateTotalPackagePrice()}}</div>
 
     <div class="container" style="margin-top: 30px;">
         <div class="row">
@@ -30,6 +31,5 @@
             </ng-container>
         </div>
     </div>
-    
-    <div class="totalPrice">Total Package Price:  ₪{{calculateTotalPackagePrice()}}</div>
+
 </div>
