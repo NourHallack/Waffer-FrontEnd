@@ -41,7 +41,7 @@ export class ApiService {
   }
 
   getProductList(){   // Client Side
-    return this.http.get<any>(this.baseURL +"api/items");
+    return this.http.get<any>(this.baseURL +"api/items?&count=4");
 
   }
 
@@ -81,7 +81,7 @@ export class ApiService {
     params.set('sortBy', sortBy);
     let options = {params : params };
 
-    return this.http.get<any>(this.baseURL +`api/items?searchFor=${searchFor}&sortBy=${sortBy}` );
+    return this.http.get<any>(this.baseURL +`api/items?searchFor=${searchFor}&sortBy=${sortBy}&count=20` );
 
   }
 
@@ -98,7 +98,7 @@ export class ApiService {
   }
 
   acceptNewSeller(id : any ){
-    return this.http.post<any>(this.baseURL +`api/sellers/verify-seller?sellerId=${id}&settings=2`,"");
+    return this.http.post<any>(this.baseURL +`api/sellers/verify-seller?sellerId=${id}&settings=20`,"");
   }
 
   declineNewSeller(id : any ){

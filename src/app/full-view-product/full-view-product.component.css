@@ -1,42 +1,71 @@
-.productImage {
-    width: auto;
-    height: auto;
-    position: unset;
-    max-width: 100%;
-    max-height: 100%;
+.layout-flex {
+  font-family: 'Tajawal', sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
-.Image{
-    width: 300px;
-    height: 300px;
-    display: block;
-    position: unset;
-    text-align: center;
+.title {
+  border: 1.7px solid black;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.cardHeader img {
-    max-width:3.1rem;
-   
-   }
-
-.productDescription{
-    flex-grow: 1;
-    padding-left: 10px;
-    font-family: 'Tajawal', sans-serif;
-    font-size: medium;
-    width: 400px;
+.title h1 {
+  margin: auto;
+  font-family: 'Tajawal', sans-serif !important;
+  font-weight: bold;
 }
-.description{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
+.photo-properties-flex{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width:100%;
+  gap:15px;
+  height:100%;
+
+}
+.product-brand-photos{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap:20px;
+}
+.product-photo img {
+  min-height: 200px;
+  max-height: 300px;
+  max-width:300px;
+}
+.brand-photo img{
+  max-height: 80px;
+
+}
+.vl {
+  border-left: 1px solid gray;
+  height: 22rem;
+}
+.properties-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width:100%;
+
 }
 
-.product{
-    width: 100%;
-    display: flex;
-    margin-top: 10px;
-    align-items: flex-start;
-    padding-top: 10px;
+.property-flex {
+  display: flex;
+  flex-direction: column;
+  font-size: 15.5px;
+  width:100%;
+
+}
+
+.property-name {
+  font-weight: bold;
+  font-size: 17px;
+
 }

@@ -126,7 +126,7 @@ export class ItemCardComponent implements OnInit {
 
     switch(sellerId){
       case "bf0f7f5b-2085-450a-db30-08da51415612" : {
-        return "../../assets/imgs/seller/sbitany.png";  
+        return "../../assets/imgs/seller/sbitany.png";
       }
       case "eedb91d4-0621-4db1-afb0-08da55c7d776": {
         return "../../assets/imgs/seller/sm.png";
@@ -140,13 +140,13 @@ export class ItemCardComponent implements OnInit {
       case "50068c0f-7b00-4325-afb3-08da55c7d776": {
         return "../../assets/imgs/seller/plaza.png";
       }
-      default: { 
+      default: {
         return "../../assets/imgs/seller/sbitany.png";
-        
-     }  
+
+     }
 
     }
-    
+
   }
 
   getCompareMsg() {
@@ -161,8 +161,8 @@ export class ItemCardComponent implements OnInit {
 
   openFullView() {
     this.dialog.open(FullViewProductComponent, {
-      width: '800px',
-      height: '500px',
+      width: '850px',
+      height: '600px',
       data: {
         product: this.product
       }
@@ -199,7 +199,7 @@ export class ItemCardComponent implements OnInit {
     var cookiesCompareProductIdList: string = " ";
     cookiesCompareProductIdList = this.cookie.get('compareProductIdList');
 
-    
+
     if (cookiesCompareProductIdList.includes(this.product.id)) {
       return true;
     }

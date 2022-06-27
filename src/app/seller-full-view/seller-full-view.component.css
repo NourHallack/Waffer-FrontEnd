@@ -29,7 +29,8 @@
 }
 .seller-photo img {
   min-height: 200px;
-  max-height: 350px;
+  max-height: 300px;
+  max-width:300px;
 }
 
 .properties-flex {
