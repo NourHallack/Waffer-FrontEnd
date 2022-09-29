@@ -141,7 +141,7 @@ export class ItemCardComponent implements OnInit {
         return "../../assets/imgs/seller/plaza.png";
       }
       default: {
-        return "../../assets/imgs/seller/sbitany.png";
+        return "../../assets/imgs/seller/avatar.png";
 
      }
 

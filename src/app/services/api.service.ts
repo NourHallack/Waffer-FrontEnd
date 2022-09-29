@@ -41,7 +41,7 @@ export class ApiService {
   }
 
   getProductList(){   // Client Side
-    return this.http.get<any>(this.baseURL +"api/items?&count=4");
+    return this.http.get<any>(this.baseURL +"api/items?&count=12");
 
   }
 
@@ -98,7 +98,7 @@ export class ApiService {
   }
 
   acceptNewSeller(id : any ){
-    return this.http.post<any>(this.baseURL +`api/sellers/verify-seller?sellerId=${id}&settings=20`,"");
+    return this.http.post<any>(this.baseURL +`api/sellers/verify-seller?sellerId=${id}&settings=2`,"");
   }
 
   declineNewSeller(id : any ){

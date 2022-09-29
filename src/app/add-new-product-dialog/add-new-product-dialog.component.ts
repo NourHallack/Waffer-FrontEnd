@@ -40,8 +40,7 @@ export class AddNewProductDialogComponent implements OnInit {
       description: ['', Validators.required],
       saleRatio: ['0' , ],
       subCategoryId: ['' , Validators.required],
-      sellerId: [ this.cookie.get('sellerId'), ], // Get it from Cookies
-      sortPriority: ['',]
+      sellerId: [ this.cookie.get('sellerId'), ] // Get it from Cookies
 
     })
   }
@@ -65,7 +64,7 @@ export class AddNewProductDialogComponent implements OnInit {
       .subscribe({
         next: res => {
           res.forEach((element: any) => {
-            this.addNewProductForm.addControl(element.codeName, new FormControl('', Validators.required))
+            this.addNewProductForm.addControl(element.codeName, new FormControl(''))
           });
           this.featureOfCategory = res;
           this.isLoadingService.remove();
@@ -75,7 +74,7 @@ export class AddNewProductDialogComponent implements OnInit {
       });
 
     this.basicFeatureList = ["name", "price", "color", "photoLink", "description", "brand", "saleRatio",
-      "dimensions", "weight", "modelNumber", "warranty", "sortPriority"];
+      "dimensions", "weight", "modelNumber", "warranty"];
   }
 
   getLabel(feature: String) {

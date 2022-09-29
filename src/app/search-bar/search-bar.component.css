@@ -27,11 +27,19 @@
 
 }
 
+::ng-deep.mat-autocomplete-panel.mat-autocomplete-visible {
+  visibility: visible;
+  width: 500px;
+  z-index:0;
+}
 
 
 
 
 
 
+.menu{
+  z-index:1;
+}
 
 

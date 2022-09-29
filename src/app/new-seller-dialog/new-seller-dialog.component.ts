@@ -58,7 +58,7 @@ export class NewSellerDialogComponent implements OnInit {
           {
             next: (res) => {
               this.isLoadingService.remove();
-
+                alert("Successfully Registered")
               this.newSellerForm.reset();
               this.dialogRef.close();
 

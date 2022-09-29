@@ -16,4 +16,12 @@ export class SellerFullViewComponent implements OnInit {
     console.log(this.seller.seller);
   }
 
+  getSellerImage(){
+    if(this.seller.seller.logo==null)
+      return "../../assets/imgs/seller/avatar.png";
+
+    else
+      return this.seller.seller.logo;
+  }
+
 }
